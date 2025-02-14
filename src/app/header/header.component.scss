@@ -9,3 +9,17 @@
   padding: 0.8rem;
   width: 23%;
 }
+
+.search-box {
+  border: none;
+  display: inline-block;
+  height: 2.5rem;
+  width: calc(100% - 2.5rem);
+}
+
+.search-button {
+  background-color: #dadada;
+  border: none;
+  height: 2.5rem;
+  width: 2.5rem;
+}
