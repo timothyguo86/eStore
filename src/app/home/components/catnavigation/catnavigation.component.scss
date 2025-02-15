@@ -1,3 +1,5 @@
+@import "../../../../styles.scss";
+
 .navigation-container {
   background-color: #1f1e1e;
   border-top: #444 solid 1px;
@@ -16,22 +18,7 @@
       font-weight: 700;
       height: 1.8rem;
       text-decoration: none;
-
-      &::after {
-        background-color: red;
-        bottom: 0;
-        content: "";
-        display: block;
-        height: 0.2rem;
-        left: 0;
-        transform: scaleX(0);
-        transition-duration: 0.2s;
-        transition-property: transform;
-      }
-
-      &:hover::after {
-        transform: scaleX(1.1);
-      }
+      @include underline-transition(1.1);
     }
   }
 }

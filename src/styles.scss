@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@mixin underline-transition($width) {
+  &::after {
+    background-color: red;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 0.2rem;
+    left: 0;
+    transform: scaleX(0);
+    transition-duration: 0.2s;
+  }
+
+  &:hover {
+    &::after {
+      transform: scaleX($width);
+    }
+  }
+}
