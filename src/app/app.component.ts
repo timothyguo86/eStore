@@ -1,12 +1,10 @@
 // Third party imports
 import { Component } from '@angular/core';
-// Local imports
-import { HeaderComponent } from './header/header.component';
-import { CatnavigationComponent } from './catnavigation/catnavigation.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, CatnavigationComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
