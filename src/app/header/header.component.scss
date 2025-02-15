@@ -1,3 +1,8 @@
+// variables
+$search-bar-background-color: #dadada;
+$search-bar-height: 2.5rem;
+$search-bar-border: none;
+
 .header {
   box-shadow: 5px 5px 20px gray;
   max-width: 100%;
@@ -10,16 +15,28 @@
   width: 23%;
 }
 
+.search-box-container {
+  display: flex;
+}
+
 .search-box {
-  border: none;
+  border: $search-bar-border;
   display: inline-block;
-  height: 2.5rem;
-  width: calc(100% - 2.5rem);
+  height: $search-bar-height;
 }
 
 .search-button {
-  background-color: #dadada;
-  border: none;
-  height: 2.5rem;
+  background-color: $search-bar-background-color;
+  border: $search-bar-border;
+  flex: none;
+  height: $search-bar-height;
   width: 2.5rem;
+}
+
+.dropdown {
+  background-color: $search-bar-background-color;
+  border: $search-bar-border;
+  flex: none;
+  font-weight: 600;
+  height: $search-bar-height;
 }
