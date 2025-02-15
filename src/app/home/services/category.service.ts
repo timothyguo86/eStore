@@ -1,4 +1,6 @@
+// Third party import
 import { Injectable } from '@angular/core';
+// Local import
 import { Category } from '../types/category.type';
 import { categories } from '../sampleData/categories.data';
 
