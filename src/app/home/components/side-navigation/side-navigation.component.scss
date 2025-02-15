@@ -28,7 +28,7 @@
       a {
         color: black;
         text-decoration: none;
-        @include underline-transition(0.3);
+        @include underline-transition(0.5);
       }
     }
   }
