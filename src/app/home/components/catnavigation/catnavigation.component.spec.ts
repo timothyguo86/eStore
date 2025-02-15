@@ -1,18 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CatNavigationComponent } from './catNavigation.component';
 
-import { CatnavigationComponent } from './catnavigation.component';
-
-describe('CatnavigationComponent', () => {
-  let component: CatnavigationComponent;
-  let fixture: ComponentFixture<CatnavigationComponent>;
+describe('CatNavigationComponent', () => {
+  let component: CatNavigationComponent;
+  let fixture: ComponentFixture<CatNavigationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CatnavigationComponent]
-    })
-    .compileComponents();
+      imports: [CatNavigationComponent],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(CatnavigationComponent);
+    fixture = TestBed.createComponent(CatNavigationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

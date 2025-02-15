@@ -2,11 +2,11 @@
 import { Component } from '@angular/core';
 // Local imports
 import { HeaderComponent } from './components/header/header.component';
-import { CatnavigationComponent } from './components/catnavigation/catnavigation.component';
+import { CatNavigationComponent } from './components/catNavigation/catNavigation.component';
 
 @Component({
   selector: 'home',
-  imports: [HeaderComponent, CatnavigationComponent],
+  imports: [HeaderComponent, CatNavigationComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'catnavigation',
+  selector: 'cat-navigation',
   imports: [],
-  templateUrl: './catnavigation.component.html',
-  styleUrl: './catnavigation.component.scss'
+  templateUrl: './catNavigation.component.html',
+  styleUrl: './catNavigation.component.scss',
 })
-export class CatnavigationComponent {
-
-}
+export class CatNavigationComponent {}
