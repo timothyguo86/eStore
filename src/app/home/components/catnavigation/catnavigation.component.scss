@@ -1,4 +1,4 @@
-@import "../../../../styles.scss";
+@use "../../../../styles.scss" as *;
 
 .navigation-container {
   background-color: #1f1e1e;

@@ -1,4 +1,4 @@
-@import "../../../../styles.scss";
+@use "../../../../styles.scss" as *;
 
 .side-navigation {
   border-radius: 1rem;
