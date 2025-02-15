@@ -40,3 +40,40 @@ $search-bar-border: none;
   font-weight: 600;
   height: $search-bar-height;
 }
+
+.login-container {
+  color: white;
+  display: inline-block;
+  margin: 1.7rem 0.2rem 0 0;
+  text-align: right;
+  width: 15%;
+
+  h5 {
+    display: inline-block;
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  .user-icon {
+    font-size: 1.3rem;
+    margin-right: 0.4rem;
+    padding: 0.2rem;
+  }
+}
+
+.cart-wishlist {
+  margin-left: 1rem;
+  margin-top: 1.7rem;
+  width: 8%;
+
+  .list-item {
+    color: white;
+    display: inline-block;
+    font-size: 1.3rem;
+    list-style-type: none;
+    margin-right: 0.5rem;
+  }
+}
