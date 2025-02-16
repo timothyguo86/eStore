@@ -12,6 +12,7 @@
         <a href="#">{{ product.product_name }}</a>
       </h5>
       <p class="product-price">{{ product.price | currency : "USD" }}</p>
+      <p><ratings [score]="product.ratings"></ratings></p>
     </div>
   </div>
   }

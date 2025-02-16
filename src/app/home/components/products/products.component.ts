@@ -3,11 +3,12 @@ import { CurrencyPipe } from '@angular/common';
 import { Component } from '@angular/core';
 // Local import
 import { ProductsService } from '../../services/products.service';
+import { RatingsComponent } from '../ratings/ratings.component';
 import { ProductListItem } from './products.type';
 
 @Component({
   selector: 'products',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, RatingsComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
 })
