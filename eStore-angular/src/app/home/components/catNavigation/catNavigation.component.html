@@ -1,7 +1,7 @@
 <div class="navigation-container">
   <ul>
     <li><a href="javascript:void(0)">Home</a></li>
-    @for(category of categories; track $index) {
+    @for(category of categoryStore.topLevelCategories$ | async; track $index) {
     <li>
       <a href="javascript:void(0)">{{ category.category }}</a>
     </li>
