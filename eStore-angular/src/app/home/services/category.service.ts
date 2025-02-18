@@ -1,16 +1,17 @@
 // Third party import
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 // Local import
 import { Category } from '../types/category.type';
-import { categories } from '../sampleData/categories.data';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoryService {
-  constructor() {}
+  constructor(private readonly http: HttpClient) {}
 
-  getAllCategories(): Category[] {
-    return categories;
+  getAllCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>('http://localhost:5001/productCategories');
   }
 }
