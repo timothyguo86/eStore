@@ -1,7 +1,8 @@
 // Third party import
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 // Local import
-import { CategoryService } from '../../services/category.service';
+import { CategoriesStoreItem } from '../../store/categoriesStoreItem';
 import { Category } from '../../types/category.type';
 
 @Component({
@@ -10,13 +11,20 @@ import { Category } from '../../types/category.type';
   templateUrl: './sideNavigation.component.html',
   styleUrl: './sideNavigation.component.scss',
 })
-export class SideNavigationComponent {
+export class SideNavigationComponent implements OnDestroy {
   categories: Category[] = [];
+  categoriesSubscription: Subscription = new Subscription();
 
-  constructor(categoryService: CategoryService) {
-    categoryService.getAllCategories().subscribe((categories) => {
-      this.categories = categories;
-    });
+  constructor(private readonly categoryStore: CategoriesStoreItem) {
+    this.categoriesSubscription.add(
+      categoryStore.categories$.subscribe((categories) => {
+        this.categories = categories;
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.categoriesSubscription.unsubscribe();
   }
 
   getCategories(parentCategoryId?: number): Category[] {
