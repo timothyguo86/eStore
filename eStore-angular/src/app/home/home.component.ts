@@ -1,10 +1,11 @@
 // First party imports
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // Local imports
-import { HeaderComponent } from './components/header/header.component';
 import { CatNavigationComponent } from './components/catNavigation/catNavigation.component';
-import { SideNavigationComponent } from './components/sideNavigation/sideNavigation.component';
+import { HeaderComponent } from './components/header/header.component';
 import { ProductsComponent } from './components/products/products.component';
+import { SideNavigationComponent } from './components/sideNavigation/sideNavigation.component';
+import { CategoriesStoreItem } from './store/categoriesStoreItem';
 
 @Component({
   selector: 'home',
@@ -17,4 +18,10 @@ import { ProductsComponent } from './components/products/products.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {}
+export class HomeComponent implements OnInit {
+  constructor(private readonly categoriesStoreItem: CategoriesStoreItem) {}
+
+  ngOnInit(): void {
+    this.categoriesStoreItem.loadCategories();
+  }
+}
