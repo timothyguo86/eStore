@@ -12,13 +12,9 @@ import { Category } from '../../types/category.type';
 })
 export class SideNavigationComponent {
   categories: Category[] = [];
-  mainCategories: Category[] = [];
-  subCategories: Category[] = [];
 
   constructor(categoryService: CategoryService) {
     this.categories = categoryService.getAllCategories();
-    this.mainCategories = this.getCategories();
-    this.subCategories = this.getCategories(this.mainCategories[0].id);
   }
 
   getCategories(parentCategoryId?: number): Category[] {
