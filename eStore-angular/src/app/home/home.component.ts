@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 // Local imports
 import { HeaderComponent } from './components/header/header.component';
 import { CatNavigationComponent } from './components/catNavigation/catNavigation.component';
-import { SideNavigationComponent } from './components/side-navigation/side-navigation.component';
+import { SideNavigationComponent } from './components/sideNavigation/sideNavigation.component';
 import { ProductsComponent } from './components/products/products.component';
 
 @Component({

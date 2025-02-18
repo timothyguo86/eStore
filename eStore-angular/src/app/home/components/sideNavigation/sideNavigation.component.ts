@@ -7,8 +7,8 @@ import { Category } from '../../types/category.type';
 @Component({
   selector: 'side-navigation',
   imports: [],
-  templateUrl: './side-navigation.component.html',
-  styleUrl: './side-navigation.component.scss',
+  templateUrl: './sideNavigation.component.html',
+  styleUrl: './sideNavigation.component.scss',
 })
 export class SideNavigationComponent {
   categories: Category[] = [];
