@@ -1,9 +1,9 @@
 <div class="main-product-container">
-  @for(product of products;track $index; let i = $index) {
+  @for(product of products; track $index; let i = $index) {
   <div class="mx-5 p-3 product-card">
     <div class="product-image-container">
       <img
-        [src]="'assets/images/' + product.product_img + '.jpg'"
+        [src]="'assets/images/' + product.product_img"
         [alt]="product.product_name"
       />
     </div>
