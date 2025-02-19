@@ -1,15 +1,6 @@
 const express = require("express");
-const mysql = require("mysql2");
 const productCategories = express.Router();
-
-const pool = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "1289",
-  database: "estore",
-  port: 3306,
-  multipleStatements: true,
-});
+const pool = require("../shared/pool");
 
 productCategories.get("/", (req, res) => {
   // Query to get all categories
