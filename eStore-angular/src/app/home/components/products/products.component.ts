@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 // Local import
 import { ProductsService } from '../../services/products.service';
 import { RatingsComponent } from '../ratings/ratings.component';
-import { ProductListItem } from './products.type';
+import { Product } from './products.type';
 
 @Component({
   selector: 'products',
@@ -13,7 +13,7 @@ import { ProductListItem } from './products.type';
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent {
-  products: ProductListItem[] = [];
+  products: Product[] = [];
 
   constructor(productsService: ProductsService) {
     this.products = productsService.getProductsList();

@@ -1,6 +1,6 @@
-import { ProductListItem } from '../components/products/products.type';
+import { Product } from '../components/products/products.type';
 
-export const products: ProductListItem[] = [
+export const products: Product[] = [
   {
     id: 1,
     product_name: 'Jacket',
