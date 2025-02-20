@@ -5,14 +5,18 @@ const pool = require("../shared/pool");
 products.get("/", (req, res) => {
   let mainCategoryId = req.query.maincategoryid;
   let subCategoryId = req.query.subcategoryid;
+  let keyword = req.query.keyword;
 
   let query = "select * FROM products";
 
-  if (subCategoryId) {
-    query += " WHERE category_id = " + subCategoryId;
-  }
   if (mainCategoryId) {
     query = `select products.* from products, categories where products.category_id = categories.id and categories.parent_category_id = ${mainCategoryId}`;
+  }
+  if (subCategoryId) {
+    query += ` WHERE category_id = ${subCategoryId}`;
+  }
+  if (keyword) {
+    query += " and keywords LIKE '%" + keyword + "%'";
   }
 
   // Query to get all products
@@ -28,7 +32,7 @@ products.get("/", (req, res) => {
 products.get("/:id", (req, res) => {
   let id = req.params.id;
   // Query to get specific product by product id
-  pool.query("select * FROM products WHERE id = " + id, (err, products) => {
+  pool.query(`select * FROM products WHERE id = ${id}`, (err, products) => {
     if (err) {
       res.status(500).send(err);
     } else {
