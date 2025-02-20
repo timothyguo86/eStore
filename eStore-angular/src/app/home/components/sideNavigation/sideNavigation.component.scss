@@ -27,6 +27,7 @@
 
       a {
         color: black;
+        cursor: pointer;
         text-decoration: none;
         @include underline-transition(0.5);
       }
