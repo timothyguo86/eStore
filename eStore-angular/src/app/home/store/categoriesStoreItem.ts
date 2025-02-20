@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 // Local import
 import { CategoryService } from '../services/category.service';
-import { Category } from '../types/category.type';
+import { Category } from '../interfaces/category.interface';
 import { StoreItem } from './storeItem';
 
 @Injectable({

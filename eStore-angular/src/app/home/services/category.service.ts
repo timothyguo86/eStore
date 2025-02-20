@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 // Local import
-import { Category } from '../types/category.type';
+import { Category } from '../interface/category.type';
 
 @Injectable({
   providedIn: 'root',

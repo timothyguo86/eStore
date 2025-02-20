@@ -3,7 +3,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 // Local import
 import { CategoriesStoreItem } from '../../store/categoriesStoreItem';
-import { Category } from '../../types/category.type';
+import { Category } from '../../interfaces/category.interface';
 
 @Component({
   selector: 'side-navigation',
