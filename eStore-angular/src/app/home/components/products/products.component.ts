@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 // Local import
 import { ProductsService } from '../../services/products.service';
 import { RatingsComponent } from '../ratings/ratings.component';
-import { Product } from './products.type';
+import { Product } from '../../interfaces/products.interface';
 
 @Component({
   selector: 'products',

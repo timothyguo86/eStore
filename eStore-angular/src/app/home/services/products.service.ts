@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 // Local import
-import { Product } from '../components/products/products.type';
+import { Product } from '../interfaces/products.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({
