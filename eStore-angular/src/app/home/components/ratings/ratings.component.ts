@@ -23,6 +23,8 @@ export class RatingsComponent {
   private _score: number = 0;
 
   @Input({ required: true }) set score(val: number) {
+    this.stars = [];
+
     if (val < 0) {
       this._score = 0;
     } else if (val > 5) {
