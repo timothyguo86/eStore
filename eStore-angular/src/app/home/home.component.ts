@@ -29,4 +29,8 @@ export class HomeComponent implements OnInit {
     this.categoriesStoreItem.loadCategories();
     this.productsStoreItem.loadProducts();
   }
+
+  onSelectSubCategory(subCategoryId: number) {
+    this.productsStoreItem.loadProducts(`subcategoryid=${subCategoryId}`);
+  }
 }
