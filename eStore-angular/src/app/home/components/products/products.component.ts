@@ -1,23 +1,16 @@
 // First party import
-import { CurrencyPipe } from '@angular/common';
+import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { Component } from '@angular/core';
 // Local import
-import { ProductsService } from '../../services/products.service';
 import { RatingsComponent } from '../ratings/ratings.component';
-import { Product } from '../../interfaces/products.interface';
+import { ProductsStoreItem } from '../../store/products.storeItem';
 
 @Component({
   selector: 'products',
-  imports: [CurrencyPipe, RatingsComponent],
+  imports: [CurrencyPipe, RatingsComponent, AsyncPipe],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent {
-  products: Product[] = [];
-
-  constructor(productsService: ProductsService) {
-    productsService.getAllProducts().subscribe((products) => {
-      this.products = products;
-    });
-  }
+  constructor(public productsStore: ProductsStoreItem) {}
 }

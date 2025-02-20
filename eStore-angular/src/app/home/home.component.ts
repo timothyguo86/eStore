@@ -6,6 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProductsComponent } from './components/products/products.component';
 import { SideNavigationComponent } from './components/sideNavigation/sideNavigation.component';
 import { CategoriesStoreItem } from './store/categoriesStoreItem';
+import { ProductsStoreItem } from './store/products.storeItem';
 
 @Component({
   selector: 'home',
@@ -19,9 +20,13 @@ import { CategoriesStoreItem } from './store/categoriesStoreItem';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  constructor(private readonly categoriesStoreItem: CategoriesStoreItem) {}
+  constructor(
+    private readonly categoriesStoreItem: CategoriesStoreItem,
+    private readonly productsStoreItem: ProductsStoreItem
+  ) {}
 
   ngOnInit(): void {
     this.categoriesStoreItem.loadCategories();
+    this.productsStoreItem.loadProducts();
   }
 }
