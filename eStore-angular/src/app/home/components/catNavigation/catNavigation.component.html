@@ -3,7 +3,7 @@
     <li><a href="javascript:void(0)">Home</a></li>
     @for(category of categoryStore.topLevelCategories$ | async; track $index) {
     <li>
-      <a href="javascript:void(0)">{{ category.category }}</a>
+      <a (click)="onCategoryClicked(category)">{{ category.category }}</a>
     </li>
     }
   </ul>
