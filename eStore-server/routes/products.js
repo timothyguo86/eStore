@@ -15,7 +15,7 @@ products.get("/", (req, res) => {
   if (subCategoryId) {
     query += ` WHERE category_id = ${subCategoryId}`;
   }
-  if (keyword) {
+  if (keyword && keyword.length >= 3) {
     query += " and keywords LIKE '%" + keyword + "%'";
   }
 
