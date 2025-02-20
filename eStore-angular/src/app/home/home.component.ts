@@ -30,6 +30,10 @@ export class HomeComponent implements OnInit {
     this.productsStoreItem.loadProducts();
   }
 
+  onSelectCategory(categoryId: number) {
+    this.productsStoreItem.loadProducts(`maincategoryid=${categoryId}`);
+  }
+
   onSelectSubCategory(subCategoryId: number) {
     this.productsStoreItem.loadProducts(`subcategoryid=${subCategoryId}`);
   }
