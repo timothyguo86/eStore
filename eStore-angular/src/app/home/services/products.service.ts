@@ -11,7 +11,9 @@ import { Observable } from 'rxjs';
 export class ProductsService {
   constructor(private readonly http: HttpClient) {}
 
-  getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>('http://localhost:5001/products');
+  getAllProducts(query?: string): Observable<Product[]> {
+    let url = 'http://localhost:5001/products';
+    if (query) url += `?${query}`;
+    return this.http.get<Product[]>(url);
   }
 }

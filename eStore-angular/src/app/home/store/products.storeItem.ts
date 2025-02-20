@@ -1,10 +1,10 @@
 // Third party import
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 // Local import
-import { StoreItem } from './storeItem';
 import { Product } from '../interfaces/products.interface';
 import { ProductsService } from '../services/products.service';
+import { StoreItem } from './storeItem';
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +14,8 @@ export class ProductsStoreItem extends StoreItem<Product[]> {
     super([]);
   }
 
-  async loadProducts() {
-    this.productsService.getAllProducts().subscribe((products) => {
+  async loadProducts(query?: string) {
+    this.productsService.getAllProducts(query).subscribe((products) => {
       this.setValue(products);
     });
   }
