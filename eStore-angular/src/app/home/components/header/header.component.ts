@@ -1,6 +1,6 @@
 // Third party imports
 import { AsyncPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faSearch,
@@ -9,6 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 // Local imports
 import { CategoriesStoreItem } from '../../store/categoriesStoreItem';
+import { SearchKeyword } from '../../interfaces/searchKeyword.interface';
 
 @Component({
   selector: 'header',
@@ -21,5 +22,16 @@ export class HeaderComponent {
   faUserCircle = faUserCircle;
   faShoppingCart = faShoppingCart;
 
+  @Output()
+  searchClicked: EventEmitter<SearchKeyword> =
+    new EventEmitter<SearchKeyword>();
+
   constructor(public categoryStore: CategoriesStoreItem) {}
+
+  onClickSearch(keyword: string, categoryId: string) {
+    this.searchClicked.emit({
+      categoryId: parseInt(categoryId),
+      keyword,
+    });
+  }
 }
