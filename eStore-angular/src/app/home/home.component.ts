@@ -5,6 +5,7 @@ import { CatNavigationComponent } from './components/catNavigation/catNavigation
 import { HeaderComponent } from './components/header/header.component';
 import { ProductsComponent } from './components/products/products.component';
 import { SideNavigationComponent } from './components/sideNavigation/sideNavigation.component';
+import { SearchKeyword } from './interfaces/searchKeyword.interface';
 import { CategoriesStoreItem } from './store/categoriesStoreItem';
 import { ProductsStoreItem } from './store/products.storeItem';
 
@@ -36,5 +37,11 @@ export class HomeComponent implements OnInit {
 
   onSelectSubCategory(subCategoryId: number) {
     this.productsStoreItem.loadProducts(`subcategoryid=${subCategoryId}`);
+  }
+
+  onSearchKeyword(searchKeyword: SearchKeyword) {
+    this.productsStoreItem.loadProducts(
+      `maincategoryid=${searchKeyword.categoryId}&keyword=${searchKeyword.keyword}`
+    );
   }
 }
