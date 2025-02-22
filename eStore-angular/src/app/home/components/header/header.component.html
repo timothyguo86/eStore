@@ -4,6 +4,7 @@
   </div>
   <!-- Search -->
   <div class="p-0 my-4 w-50 h-25 bg-white search-box-container">
+    @if(displaySearch) {
     <select #categoryOptions class="dropdown p0 m0">
       @for(category of categoryStore.topLevelCategories$| async; track $index) {
       <option value="{{ category.id }}">{{ category.category }}</option>
@@ -22,6 +23,7 @@
     >
       <fa-icon [icon]="faSearch"></fa-icon>
     </button>
+    }
   </div>
 
   <!-- Sign In/ Login -->
