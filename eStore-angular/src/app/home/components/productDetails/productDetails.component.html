@@ -1,1 +1,17 @@
-<p>product-details works!</p>
+<div class="row my-5 product-details-container">
+  <div class="col product-image-container">
+    <img src="assets/images/shop-1.jpg" alt="" />
+  </div>
+
+  <div class="col product-information-container">
+    <span id="product-name">Product Name</span>
+    <ratings [score]="4"></ratings>
+    <hr />
+    <div class="product-price">
+      Price:
+      <span class="price"> $45 </span>
+      <div>Inclusive of all taxes.</div>
+    </div>
+    <div class="my-3 product-description">Product description here</div>
+  </div>
+</div>
