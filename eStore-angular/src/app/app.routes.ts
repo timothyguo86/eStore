@@ -2,7 +2,8 @@ import { Routes } from '@angular/router';
 import { NotFoundComponent } from './notFound/notFound.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  // Default route
+  { path: '', redirectTo: '/home/products', pathMatch: 'full' },
   // Lazy loading home component
   {
     path: 'home',
