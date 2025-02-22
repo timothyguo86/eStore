@@ -1,10 +1,11 @@
 <div class="navigation-container">
   <ul>
-    <li><a href="javascript:void(0)">Home</a></li>
-    @for(category of categoryStore.topLevelCategories$ | async; track $index) {
+    <li><a routerLink="/home/products">Home</a></li>
+    @if(displayOptions) { @for(category of categoryStore.topLevelCategories$ |
+    async; track $index) {
     <li>
       <a (click)="onCategoryClicked(category)">{{ category.category }}</a>
     </li>
-    }
+    } }
   </ul>
 </div>
