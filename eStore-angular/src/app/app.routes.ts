@@ -1,9 +1,12 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './notFound/notFound.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  // Lazy loading home component
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.routes').then((c) => c.HOME_ROUTES),
+  },
   { path: '**', component: NotFoundComponent },
 ];
