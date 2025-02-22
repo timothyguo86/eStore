@@ -13,6 +13,10 @@
     margin-top: 1rem;
 
     .product-image-container {
+      a {
+        cursor: pointer;
+      }
+
       img {
         border-radius: 0.3rem;
         display: flex;

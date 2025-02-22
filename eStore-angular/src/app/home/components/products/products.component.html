@@ -3,14 +3,16 @@
   {
   <div class="mx-5 p-3 product-card">
     <div class="product-image-container">
-      <img
-        [src]="'assets/images/' + product.product_img"
-        [alt]="product.product_name"
-      />
+      <a routerLink="../product">
+        <img
+          [src]="'assets/images/' + product.product_img"
+          [alt]="product.product_name"
+        />
+      </a>
     </div>
     <div class="product-info">
       <h5>
-        <a href="#">{{ product.product_name }}</a>
+        <a routerLink="../product">{{ product.product_name }}</a>
       </h5>
       <p class="product-price">{{ product.price | currency : "USD" }}</p>
       <p><ratings [score]="product.ratings"></ratings></p>
