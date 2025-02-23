@@ -35,11 +35,16 @@
   </div>
 
   <!-- Cart Wishlist -->
-  <div class="cart-wishlist">
-    <ul class="p-0">
-      <li class="list-item">
-        <fa-icon [icon]="faShoppingCart"></fa-icon>
-      </li>
-    </ul>
+  <div class="cart-wishlist p-0 list-item">
+    <button class="btn btn-dark position-relative">
+      <fa-icon [icon]="faShoppingCart"></fa-icon>
+      @if(cartStoreItem.cart$ | async; as cart) { @if(cart.totalProducts > 0) {
+      <span
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark"
+      >
+        {{ cart.totalProducts }}
+      </span>
+      } }
+    </button>
   </div>
 </div>

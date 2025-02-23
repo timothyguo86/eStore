@@ -11,6 +11,7 @@ import {
 import { filter } from 'rxjs';
 // Local imports
 import { SearchKeyword } from '../../interfaces/searchKeyword.interface';
+import { CartStoreItem } from '../../store/cartStoreItem';
 import { CategoriesStoreItem } from '../../store/categoriesStoreItem';
 
 @Component({
@@ -32,6 +33,7 @@ export class HeaderComponent {
 
   constructor(
     public categoryStore: CategoriesStoreItem,
+    public cartStoreItem: CartStoreItem,
     private readonly router: Router
   ) {
     router.events
