@@ -12,7 +12,7 @@ import { StoreItem } from './storeItem';
 export class CartStoreItem extends StoreItem<Cart> {
   constructor() {
     super({
-      product: [],
+      products: [],
       totalAmount: 0,
       totalProducts: 0,
     });
@@ -27,16 +27,19 @@ export class CartStoreItem extends StoreItem<Cart> {
   }
 
   addProduct(product: Product): void {
-    const cartProduct: CartItem | undefined = this.cart.product.find(
+    const cartProduct: CartItem | undefined = this.cart.products.find(
       (cartProduct) => cartProduct.product.id === product.id
     );
 
     if (!cartProduct) {
-      this.cart.product.push(...this.cart.product, {
-        product,
-        quantity: 1,
-        amount: product.price,
-      });
+      this.cart.products = [
+        ...this.cart.products,
+        {
+          product,
+          quantity: 1,
+          amount: product.price,
+        },
+      ];
     } else cartProduct.quantity += 1;
 
     this.cart.totalAmount += product.price;
