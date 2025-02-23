@@ -16,10 +16,10 @@ export class SideNavigationComponent implements OnDestroy {
   subCategoryClicked: EventEmitter<number> = new EventEmitter<number>();
 
   categories: Category[] = [];
-  categoriesSubscription: Subscription = new Subscription();
+  subscriptions: Subscription = new Subscription();
 
   constructor(private readonly categoryStore: CategoriesStoreItem) {
-    this.categoriesSubscription.add(
+    this.subscriptions.add(
       categoryStore.categories$.subscribe((categories) => {
         this.categories = categories;
       })
@@ -27,7 +27,7 @@ export class SideNavigationComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.categoriesSubscription.unsubscribe();
+    this.subscriptions.unsubscribe();
   }
 
   getCategories(parentCategoryId?: number): Category[] {
