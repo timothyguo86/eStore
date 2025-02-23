@@ -11,11 +11,19 @@ import { StoreItem } from './storeItem';
 })
 export class CartStoreItem extends StoreItem<Cart> {
   constructor() {
-    super({
-      products: [],
-      totalAmount: 0,
-      totalProducts: 0,
-    });
+    const storedCart: any = sessionStorage.getItem('cart');
+    // If there is a cart in the session storage, load it
+    if (storedCart) {
+      super(JSON.parse(storedCart));
+    }
+    // If there is no cart in the session storage, create a new cart
+    else {
+      super({
+        products: [],
+        totalAmount: 0,
+        totalProducts: 0,
+      });
+    }
   }
 
   get cart$(): Observable<Cart> {
@@ -47,6 +55,8 @@ export class CartStoreItem extends StoreItem<Cart> {
 
     this.cart.totalAmount += Number(product.price);
     this.cart.totalProducts += 1;
+
+    this.saveCart();
   }
 
   removeProduct(cartItem: CartItem): void {
@@ -56,6 +66,12 @@ export class CartStoreItem extends StoreItem<Cart> {
 
     this.cart.totalProducts -= cartItem.quantity;
     this.cart.totalAmount -= cartItem.amount;
+
+    if (this.cart.totalProducts === 0) {
+      sessionStorage.clear();
+    } else {
+      this.saveCart();
+    }
   }
 
   decreaseProductQuantity(cartItem: CartItem): void {
@@ -70,7 +86,13 @@ export class CartStoreItem extends StoreItem<Cart> {
         cartProduct.quantity -= 1;
         this.cart.totalProducts -= 1;
         this.cart.totalAmount -= cartProduct.product.price;
+        this.saveCart();
       }
     }
+  }
+
+  private saveCart(): void {
+    sessionStorage.clear();
+    sessionStorage.setItem('cart', JSON.stringify(this.cart));
   }
 }
