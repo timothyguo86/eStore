@@ -1,5 +1,5 @@
-@if(product){
 <div class="row my-5 product-details-container">
+  @if(product){
   <div class="col product-image-container">
     <img
       [src]="'assets/images/' + product.product_img"
@@ -20,7 +20,7 @@
       {{ product.product_description }}
     </div>
   </div>
+  } @else {
+  <p>Loading product details...</p>
+  }
 </div>
-}@else {
-<p>Loading product details...</p>
-}
