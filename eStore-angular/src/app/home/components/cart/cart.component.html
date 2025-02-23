@@ -50,12 +50,24 @@
     <hr />
     }
   </div>
+  this.saveCart();  <div class="col-4 px-4 py-3 my-4 cart-summary">
+    <h2 class="mb-5 mt-3">Summary</h2>
+    <div>
+      <span>Cart Total: {{ cartStoreItem.cart.totalAmount | currency }}</span>
+      <span>Shipping Charges: Free</span>
+      <hr />
+      <span class="summary-total">
+        Total: {{ cartStoreItem.cart.totalAmount | currency }}
+      </span>
+    </div>
+    <div class="btn btn-outline-dark w-100 mb-4 mt-1">Checkout</div>
+  </div>
 </div>
 } @else {
 <div class="p-4 ec-main-div">
   <span class="my-5 ec-text">The Cart is Empty</span>
   <hr />
-  <button class="btn-warning my-3" (click)="navigateToHome()">
+  <button class="btn btn-warning my-3" (click)="navigateToHome()">
     <span>Continue Shopping</span>
   </button>
 </div>
