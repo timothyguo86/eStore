@@ -15,7 +15,7 @@ export const HOME_ROUTES: Routes = [
         component: ProductsGalleryComponent,
       },
       {
-        path: 'product',
+        path: 'product/:id',
         component: ProductDetailsComponent,
       },
     ],

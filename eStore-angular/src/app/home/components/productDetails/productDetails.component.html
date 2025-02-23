@@ -1,17 +1,26 @@
+@if(product){
 <div class="row my-5 product-details-container">
   <div class="col product-image-container">
-    <img src="assets/images/shop-1.jpg" alt="" />
+    <img
+      [src]="'assets/images/' + product.product_img"
+      [alt]="product.product_name"
+    />
   </div>
 
   <div class="col product-information-container">
-    <span id="product-name">Product Name</span>
-    <ratings [score]="4"></ratings>
+    <span id="product-name">{{ product.product_name }}</span>
+    <ratings [score]="product.ratings"></ratings>
     <hr />
     <div class="product-price">
       Price:
-      <span class="price"> $45 </span>
+      <span class="price"> {{ product.price | currency }}</span>
       <div>Inclusive of all taxes.</div>
     </div>
-    <div class="my-3 product-description">Product description here</div>
+    <div class="my-3 product-description">
+      {{ product.product_description }}
+    </div>
   </div>
 </div>
+}@else {
+<p>Loading product details...</p>
+}
