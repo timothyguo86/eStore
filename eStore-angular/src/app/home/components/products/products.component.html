@@ -18,6 +18,14 @@
       </h5>
       <p class="product-price">{{ product.price | currency : "USD" }}</p>
       <p><ratings [score]="product.ratings"></ratings></p>
+      <div class="my-3">
+        <button class="cart-button" (click)="addToCart(product)">
+          <div class="cart-icon-container">
+            <fa-icon [icon]="faShoppingCart"></fa-icon>
+          </div>
+          <div class="cart-text-container mx-3">Add to Cart</div>
+        </button>
+      </div>
     </div>
   </div>
   }@empty {

@@ -19,6 +19,12 @@
     <div class="my-3 product-description">
       {{ product.product_description }}
     </div>
+    <button class="my-5 btn btn-warning cart-button" (click)="addToCart()">
+      <div class="cart-icon-container">
+        <fa-icon [icon]="faShoppingCart"></fa-icon>
+      </div>
+      <div class="cart-text-container">Add to Cart</div>
+    </button>
   </div>
   } @else {
   <p>Loading product details...</p>

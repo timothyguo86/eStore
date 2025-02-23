@@ -2,25 +2,30 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 // Local import
 import { Product } from '../../interfaces/products.interface';
+import { CartStoreItem } from '../../store/cartStoreItem';
 import { ProductsStoreItem } from '../../store/products.storeItem';
 import { RatingsComponent } from '../ratings/ratings.component';
 
 @Component({
   selector: 'product-details',
-  imports: [RatingsComponent, CurrencyPipe],
+  imports: [RatingsComponent, CurrencyPipe, FontAwesomeModule],
   templateUrl: './productDetails.component.html',
   styleUrl: './productDetails.component.scss',
 })
 export class ProductDetailsComponent implements OnInit, OnDestroy {
   subscriptions: Subscription = new Subscription();
-  product?: Product;
+  product!: Product;
+  faShoppingCart = faShoppingCart;
 
   constructor(
     private readonly activateRoute: ActivatedRoute,
-    private readonly productsStoreItem: ProductsStoreItem
+    private readonly productsStoreItem: ProductsStoreItem,
+    private readonly cartStoreItem: CartStoreItem
   ) {}
 
   ngOnInit(): void {
@@ -35,5 +40,9 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+  }
+
+  addToCart(): void {
+    this.cartStoreItem.addProduct(this.product);
   }
 }
