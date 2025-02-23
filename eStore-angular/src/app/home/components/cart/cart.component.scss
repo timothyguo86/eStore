@@ -1,0 +1,48 @@
+.ec-main-div {
+  height: 15rem;
+  margin: auto;
+  margin-top: 3rem;
+  text-align: center;
+  width: 90%;
+
+  .ec-text {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 3rem;
+    font-weight: 500;
+  }
+}
+
+.fc-main-div {
+  margin: auto;
+  text-align: center;
+  width: 70%;
+
+  .cart-item-card {
+    img {
+      border-radius: 0.5rem;
+      height: 13rem;
+      margin-bottom: 1rem;
+    }
+
+    .cart-item-details {
+      text-align: left;
+
+      .cart-item-name {
+        font-size: 1.4rem;
+      }
+
+      .cart-item-price {
+        float: right;
+
+        span {
+          font-size: 1.5rem;
+        }
+      }
+
+      span {
+        font-size: large;
+        font-weight: 600;
+      }
+    }
+  }
+}
