@@ -18,9 +18,9 @@ export class SideNavigationComponent implements OnDestroy {
   categories: Category[] = [];
   subscriptions: Subscription = new Subscription();
 
-  constructor(private readonly categoryStore: CategoriesStoreItem) {
+  constructor(private readonly categoryStoreItem: CategoriesStoreItem) {
     this.subscriptions.add(
-      categoryStore.categories$.subscribe((categories) => {
+      categoryStoreItem.categories$.subscribe((categories) => {
         this.categories = categories;
       })
     );
