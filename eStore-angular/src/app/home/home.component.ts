@@ -1,7 +1,6 @@
 // First party imports
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { filter } from 'rxjs';
+import { RouterModule } from '@angular/router';
 // Local imports
 import { CatNavigationComponent } from './components/catNavigation/catNavigation.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -18,17 +17,8 @@ import { ProductsStoreItem } from './store/products.storeItem';
 export class HomeComponent implements OnInit {
   constructor(
     private readonly categoriesStoreItem: CategoriesStoreItem,
-    private readonly productsStoreItem: ProductsStoreItem,
-    private readonly router: Router
-  ) {
-    router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((event) => {
-        if (event.url === '/home') {
-          router.navigate(['/home/products']);
-        }
-      });
-  }
+    private readonly productsStoreItem: ProductsStoreItem
+  ) {}
 
   ngOnInit(): void {
     this.categoriesStoreItem.loadCategories();

@@ -11,6 +11,12 @@ export const HOME_ROUTES: Routes = [
     path: '',
     component: HomeComponent,
     children: [
+      // Default route
+      {
+        path: '',
+        redirectTo: 'products',
+        pathMatch: 'full',
+      },
       {
         path: 'products',
         component: ProductsGalleryComponent,
