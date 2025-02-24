@@ -97,8 +97,13 @@
         id="confirmPassword"
         formControlName="confirmPassword"
       />
-      @if( confirmPassword?.touched && confirmPassword?.errors?.['required']) {
+      @if(confirmPassword?.touched && confirmPassword?.errors?.['required']) {
       <span class="text-danger">Confirm Password is required</span>
+      }
+      <!-- form level validation -->
+      @if(confirmPassword?.touched &&
+      userSignupForm.errors?.['passwordMismatch']) {
+      <span class="text-danger">Passwords don't match</span>
       }
     </div>
     <div class="text-center form-group-margin">

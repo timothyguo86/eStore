@@ -8,6 +8,7 @@ import {
   AbstractControl,
 } from '@angular/forms';
 // Local import
+import { matchPasswordsValidator } from './validators/matchPasswords.validator';
 
 @Component({
   selector: 'user-signup',
@@ -21,17 +22,23 @@ export class UserSignupComponent implements OnInit {
   constructor(private readonly fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.userSignupForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: [''],
-      address: [''],
-      city: [''],
-      state: [''],
-      pin: [''],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-    });
+    this.userSignupForm = this.fb.group(
+      {
+        firstName: ['', Validators.required],
+        lastName: [''],
+        address: [''],
+        city: [''],
+        state: [''],
+        pin: [''],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', Validators.required],
+        confirmPassword: ['', Validators.required],
+      },
+      // Form group level validation
+      {
+        validators: matchPasswordsValidator(),
+      }
+    );
   }
 
   get firstName(): AbstractControl<any, any> | null {
