@@ -12,6 +12,9 @@
           id="firstName"
           formControlName="firstName"
         />
+        @if(firstName?.touched && firstName?.errors?.['required']) {
+        <span class="text-danger">First Name is required</span>
+        }
       </div>
       <div class="form-group col-md-6">
         <label for="lastName">Last Name</label>
@@ -67,6 +70,11 @@
         id="email"
         formControlName="email"
       />
+      @if( email?.touched && email?.errors?.['required']) {
+      <span class="text-danger">First Name is required</span>
+      } @if( email?.touched && email?.errors?.['email']) {
+      <span class="text-danger">Enter valid email address</span>
+      }
     </div>
     <div class="form-group form-group-margin">
       <label for="password">Password*</label>
@@ -76,6 +84,9 @@
         id="password"
         formControlName="password"
       />
+      @if( password?.touched && password?.errors?.['required']) {
+      <span class="text-danger">Password is required</span>
+      }
     </div>
 
     <div class="form-group form-group-margin">
@@ -86,9 +97,18 @@
         id="confirmPassword"
         formControlName="confirmPassword"
       />
+      @if( confirmPassword?.touched && confirmPassword?.errors?.['required']) {
+      <span class="text-danger">Confirm Password is required</span>
+      }
     </div>
     <div class="text-center form-group-margin">
-      <button type="submit" class="btn btn-warning">Join</button>
+      <button
+        type="submit"
+        class="btn btn-warning"
+        [disabled]="userSignupForm.invalid"
+      >
+        Join
+      </button>
     </div>
   </form>
 </div>
