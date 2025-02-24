@@ -1,7 +1,7 @@
 // Third party imports
 import { AsyncPipe } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faSearch,
@@ -16,7 +16,7 @@ import { CategoriesStoreItem } from '../../store/categoriesStoreItem';
 
 @Component({
   selector: 'header',
-  imports: [FontAwesomeModule, AsyncPipe],
+  imports: [FontAwesomeModule, AsyncPipe, RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
