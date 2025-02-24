@@ -50,12 +50,9 @@ export class CartStoreItem extends StoreItem<Cart> {
       ];
     } else {
       cartProduct.quantity += 1;
-      cartProduct.amount += Number(product.price);
     }
 
-    this.cart.totalAmount += Number(product.price);
-    this.cart.totalProducts += 1;
-
+    this.recalculateCartTotals();
     this.saveCart();
   }
 
@@ -64,12 +61,10 @@ export class CartStoreItem extends StoreItem<Cart> {
       (product) => product.product.id !== cartItem.product.id
     );
 
-    this.cart.totalProducts -= cartItem.quantity;
-    this.cart.totalAmount -= cartItem.amount;
-
     if (this.cart.totalProducts === 0) {
       sessionStorage.clear();
     } else {
+      this.recalculateCartTotals();
       this.saveCart();
     }
   }
@@ -84,8 +79,9 @@ export class CartStoreItem extends StoreItem<Cart> {
         this.removeProduct(cartProduct);
       } else {
         cartProduct.quantity -= 1;
-        this.cart.totalProducts -= 1;
-        this.cart.totalAmount -= cartProduct.product.price;
+        cartProduct.amount =
+          cartProduct.quantity * Number(cartProduct.product.price);
+        this.recalculateCartTotals();
         this.saveCart();
       }
     }
@@ -94,5 +90,16 @@ export class CartStoreItem extends StoreItem<Cart> {
   private saveCart(): void {
     sessionStorage.clear();
     sessionStorage.setItem('cart', JSON.stringify(this.cart));
+  }
+
+  private recalculateCartTotals(): void {
+    this.cart.totalProducts = this.cart.products.reduce(
+      (sum, item) => sum + item.quantity,
+      0
+    );
+    this.cart.totalAmount = this.cart.products.reduce(
+      (sum, item) => sum + item.quantity * Number(item.product.price),
+      0
+    );
   }
 }
