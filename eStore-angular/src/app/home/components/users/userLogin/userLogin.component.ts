@@ -1,5 +1,5 @@
 // Third party imports
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -26,7 +26,8 @@ export class UserLoginComponent implements OnInit {
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly location: Location
   ) {}
 
   ngOnInit(): void {
@@ -50,6 +51,11 @@ export class UserLoginComponent implements OnInit {
         this.userService.activateToken(response);
         this.alertType = 0;
         this.alertMessage = 'Login successful!';
+
+        // Redirect to the previous page after successfully login after 1 second
+        setTimeout(() => {
+          this.location.back();
+        }, 1000);
       },
       error: (error) => {
         this.alertType = 2;
