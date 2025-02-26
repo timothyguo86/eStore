@@ -6,6 +6,7 @@ import { ProductDetailsComponent } from './components/productDetails/productDeta
 import { ProductsGalleryComponent } from './components/productsGallery/productsGallery.component';
 import { UserSignupComponent } from './components/users/userSignup/userSignup.component';
 import { HomeComponent } from './home.component';
+import { UserLoginComponent } from './components/users/userLogin/userLogin.component';
 
 export const HOME_ROUTES: Routes = [
   {
@@ -33,6 +34,10 @@ export const HOME_ROUTES: Routes = [
       {
         path: 'signup',
         component: UserSignupComponent,
+      },
+      {
+        path: 'login',
+        component: UserLoginComponent,
       },
     ],
   },
