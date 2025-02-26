@@ -41,6 +41,18 @@
       <div class="text-center form-group-margin">
         Not a member? <a routerLink="../signup">Register</a>
       </div>
+
+      @if(alertMessage) {
+      <div
+        class="alert"
+        [ngClass]="{
+          'alert-success': alertType === 0,
+          'alert-danger': alertType === 2
+        }"
+      >
+        {{ alertMessage }}
+      </div>
+      }
     </form>
   </div>
 </div>

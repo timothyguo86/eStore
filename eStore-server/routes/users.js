@@ -76,7 +76,7 @@ users.post("/login", (req, res) => {
                 "eStore-secret-key",
                 { expiresIn: "1h" }
               );
-              res.status(200).send({ token });
+              res.status(200).send({ token, expiresInSeconds: 3600 });
             } else {
               res.status(401).send({
                 message: `Invalid password.`,

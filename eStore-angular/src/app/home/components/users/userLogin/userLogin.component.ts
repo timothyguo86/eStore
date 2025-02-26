@@ -1,4 +1,5 @@
 // Third party imports
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -8,17 +9,25 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+// Local import
+import { LoginToken } from '../../../interfaces/user.interface';
+import { UserService } from '../../../services/userService.service';
 
 @Component({
   selector: 'user-login',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, CommonModule],
   templateUrl: './userLogin.component.html',
   styleUrl: './userLogin.component.scss',
 })
 export class UserLoginComponent implements OnInit {
   userLoginForm: FormGroup = new FormGroup({});
+  alertType: number = 0; // 0-success, 1-warning, 2-error
+  alertMessage: string = '';
 
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.userLoginForm = this.fb.group({
@@ -36,6 +45,16 @@ export class UserLoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log();
+    this.userService.login(this.email?.value, this.password?.value).subscribe({
+      next: (response: LoginToken) => {
+        this.userService.activateToken(response);
+        this.alertType = 0;
+        this.alertMessage = 'Login successful!';
+      },
+      error: (error) => {
+        this.alertType = 2;
+        this.alertMessage = error.error.message;
+      },
+    });
   }
 }

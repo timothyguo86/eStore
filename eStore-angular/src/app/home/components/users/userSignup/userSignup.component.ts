@@ -73,7 +73,7 @@ export class UserSignupComponent implements OnInit {
         if (result.message === 'success') {
           this.alertMessage = 'User created successfully';
           this.alertType = 0;
-        } else if ((result.message === 'Email already exists')) {
+        } else if (result.message === 'Email already exists') {
           this.alertMessage = 'User creation failed';
           this.alertType = 1;
         }
