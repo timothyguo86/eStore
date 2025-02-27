@@ -17,4 +17,14 @@ export interface UserLogin {
 export interface LoginToken {
   token: string;
   expiresInSeconds: number;
+  user: LoggedInUser;
+}
+
+export interface LoggedInUser {
+  firstName: string;
+  lastName: string;
+  address: string;
+  city: string;
+  state: string;
+  pin: string;
 }
