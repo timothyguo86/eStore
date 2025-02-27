@@ -9,15 +9,12 @@ import { LoggedInUser, LoginToken, User } from '../interfaces/user.interface';
   providedIn: 'root',
 })
 export class UserService {
-  constructor(
-    private readonly http: HttpClient,
-    private isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject(
-      false
-    ),
-    private loggedInUserInfo: BehaviorSubject<LoggedInUser> = new BehaviorSubject(
-      <LoggedInUser>{}
-    )
-  ) {}
+  private readonly isAuthenticated: BehaviorSubject<boolean> =
+    new BehaviorSubject(false);
+  private readonly loggedInUserInfo: BehaviorSubject<LoggedInUser> =
+    new BehaviorSubject(<LoggedInUser>{});
+
+  constructor(private readonly http: HttpClient) {}
 
   get isUserAuthenticated(): boolean {
     return this.isAuthenticated.value;
