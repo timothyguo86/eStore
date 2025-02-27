@@ -80,7 +80,7 @@ users.post("/login", (req, res) => {
                 token,
                 expiresInSeconds: 3600,
                 user: {
-                  firstNameL: result[0].firstName,
+                  firstName: result[0].firstName,
                   lastName: result[0].lastName,
                   address: result[0].address,
                   city: result[0].city,
