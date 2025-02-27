@@ -27,10 +27,29 @@
   </div>
 
   <!-- Sign In/ Login -->
+  @if(isUserAuthenticated) {
+  <div class="user-container p-0">
+    <div class="dropdown user-dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle user-dropdown-button"
+        type="button"
+        data-bs-toggle="dropdown"
+        arial-expanded="false"
+      >
+        <fa-icon class="user-icon" [icon]="faUserCircle"></fa-icon>
+        Hi {{ userName }}
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  }@else {
   <div class="login-container p-0">
     <fa-icon [icon]="faUserCircle" class="user-icon"></fa-icon>
     <h5><a routerLink="login">Sign in / Join</a></h5>
   </div>
+  }
 
   <!-- Cart Wishlist -->
   <div class="cart-wishlist p-0 list-item">

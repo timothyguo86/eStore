@@ -65,6 +65,25 @@ $search-bar-border: none;
   }
 }
 
+.user-container {
+  color: white;
+  display: inline-block;
+  width: 15rem;
+  margin: 1.5rem 0.2rem 0 1.5rem;
+}
+
+.user-dropdown {
+  background-color: #212529;
+  width: 11rem;
+  z-index: 1000;
+  position: absolute;
+}
+
+.user-dropdown-button {
+  background-color: #212529;
+  border-color: #212529;
+}
+
 .cart-wishlist {
   margin-left: 1rem;
   margin-top: 1.7rem;
