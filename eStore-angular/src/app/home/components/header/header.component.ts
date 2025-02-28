@@ -1,6 +1,6 @@
 // Third party imports
 import { AsyncPipe } from '@angular/common';
-import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
+import { Component, OnDestroy, output } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
@@ -22,9 +22,7 @@ import { CategoriesStoreItem } from '../../store/categoriesStoreItem';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnDestroy {
-  @Output()
-  searchClicked: EventEmitter<SearchKeyword> =
-    new EventEmitter<SearchKeyword>();
+  readonly searchClicked = output<SearchKeyword>();
 
   faSearch = faSearch;
   faUserCircle = faUserCircle;

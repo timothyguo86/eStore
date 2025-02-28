@@ -1,5 +1,5 @@
 // Third party import
-import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
+import { Component, OnDestroy, output } from '@angular/core';
 import { Subscription } from 'rxjs';
 // Local import
 import { CategoriesStoreItem } from '../../store/categoriesStoreItem';
@@ -12,8 +12,7 @@ import { Category } from '../../interfaces/category.interface';
   styleUrl: './sideNavigation.component.scss',
 })
 export class SideNavigationComponent implements OnDestroy {
-  @Output()
-  subCategoryClicked: EventEmitter<number> = new EventEmitter<number>();
+  readonly subCategoryClicked = output<number>();
 
   categories: Category[] = [];
   subscriptions: Subscription = new Subscription();

@@ -1,6 +1,6 @@
 // Third party import
 import { AsyncPipe } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter } from 'rxjs';
 // Local import
@@ -14,8 +14,7 @@ import { CategoriesStoreItem } from '../../store/categoriesStoreItem';
   styleUrl: './catNavigation.component.scss',
 })
 export class CatNavigationComponent {
-  @Output()
-  categoryClicked: EventEmitter<number> = new EventEmitter<number>();
+  readonly categoryClicked = output<number>();
 
   displayOptions: boolean = true;
 
