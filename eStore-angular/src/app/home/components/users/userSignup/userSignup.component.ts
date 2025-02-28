@@ -1,5 +1,6 @@
 // Third party import
-import { CommonModule } from '@angular/common';
+
+import { NgClass } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -15,7 +16,7 @@ import { matchPasswordsValidator } from './validators/matchPasswords.validator';
 
 @Component({
   selector: 'user-signup',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, NgClass],
   templateUrl: './userSignup.component.html',
   styleUrl: './userSignup.component.scss',
 })

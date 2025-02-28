@@ -1,5 +1,5 @@
 // Third party imports
-import { CommonModule, Location } from '@angular/common';
+import { Location, NgClass } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -15,7 +15,7 @@ import { UserService } from '../../../services/userService.service';
 
 @Component({
   selector: 'user-login',
-  imports: [ReactiveFormsModule, RouterLink, CommonModule],
+  imports: [ReactiveFormsModule, RouterLink, NgClass],
   templateUrl: './userLogin.component.html',
   styleUrl: './userLogin.component.scss',
 })
