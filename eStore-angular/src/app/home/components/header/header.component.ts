@@ -54,7 +54,6 @@ export class HeaderComponent implements OnDestroy {
 
     this.subscription.add(
       this.userService.loggedInUser$.subscribe((loggedInUser) => {
-        console.log('header component: loggedInUser', loggedInUser);
         this.userName = loggedInUser.firstName;
       })
     );
