@@ -1,5 +1,5 @@
+// Third party import
 import { Routes } from '@angular/router';
-import { NotFoundComponent } from './notFound/notFound.component';
 
 export const routes: Routes = [
   // Default route
@@ -15,6 +15,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    component: NotFoundComponent,
+    loadComponent: () =>
+      import('./notFound/notFound.component').then((m) => m.NotFoundComponent),
   },
 ];

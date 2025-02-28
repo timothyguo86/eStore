@@ -1,5 +1,4 @@
 // Third party import
-
 import { NgClass } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {

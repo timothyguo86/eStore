@@ -1,17 +1,11 @@
 // Third party import
 import { Routes } from '@angular/router';
-// Local import
-import { CartComponent } from './components/cart/cart.component';
-import { ProductDetailsComponent } from './components/productDetails/productDetails.component';
-import { ProductsGalleryComponent } from './components/productsGallery/productsGallery.component';
-import { UserSignupComponent } from './components/users/userSignup/userSignup.component';
-import { HomeComponent } from './home.component';
-import { UserLoginComponent } from './components/users/userLogin/userLogin.component';
 
 export const HOME_ROUTES: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    loadComponent: () =>
+      import('./home.component').then((m) => m.HomeComponent),
     children: [
       // Default route
       {
@@ -21,23 +15,38 @@ export const HOME_ROUTES: Routes = [
       },
       {
         path: 'products',
-        component: ProductsGalleryComponent,
+        loadComponent: () =>
+          import('./components/productsGallery/productsGallery.component').then(
+            (m) => m.ProductsGalleryComponent
+          ),
       },
       {
         path: 'product/:id',
-        component: ProductDetailsComponent,
+        loadComponent: () =>
+          import('./components/productDetails/productDetails.component').then(
+            (m) => m.ProductDetailsComponent
+          ),
       },
       {
         path: 'cart',
-        component: CartComponent,
+        loadComponent: () =>
+          import('./components/cart/cart.component').then(
+            (m) => m.CartComponent
+          ),
       },
       {
         path: 'signup',
-        component: UserSignupComponent,
+        loadComponent: () =>
+          import('./components/users/userSignup/userSignup.component').then(
+            (m) => m.UserSignupComponent
+          ),
       },
       {
         path: 'login',
-        component: UserLoginComponent,
+        loadComponent: () =>
+          import('./components/users/userLogin/userLogin.component').then(
+            (m) => m.UserLoginComponent
+          ),
       },
     ],
   },
