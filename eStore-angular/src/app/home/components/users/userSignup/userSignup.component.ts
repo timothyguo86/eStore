@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 // Local import
 import { User } from '../../../interfaces/user.interface';
-import { UserService } from '../../../services/userService.service';
+import { UserService } from '../../../services/user.service';
 import { matchPasswordsValidator } from './validators/matchPasswords.validator';
 
 @Component({

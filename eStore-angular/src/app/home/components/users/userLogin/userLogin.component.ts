@@ -11,7 +11,7 @@ import {
 import { RouterLink } from '@angular/router';
 // Local import
 import { LoginToken } from '../../../interfaces/user.interface';
-import { UserService } from '../../../services/userService.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'user-login',

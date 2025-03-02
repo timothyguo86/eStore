@@ -11,7 +11,7 @@ import {
 import { filter, Subscription } from 'rxjs';
 // Local imports
 import { SearchKeyword } from '../../interfaces/searchKeyword.interface';
-import { UserService } from '../../services/userService.service';
+import { UserService } from '../../services/user.service';
 import { CartStoreItem } from '../../store/cartStoreItem';
 import { CategoriesStoreItem } from '../../store/categoriesStoreItem';
 
