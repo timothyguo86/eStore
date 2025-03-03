@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 // Local import
 import { Product } from '../../interfaces/products.interface';
 import { CartStoreItem } from '../../store/cartStoreItem';
-import { ProductsStoreItem } from '../../store/products.storeItem';
+import { ProductsStoreItem } from '../../store/productsStoreItem';
 import { RatingsComponent } from '../ratings/ratings.component';
 
 @Component({

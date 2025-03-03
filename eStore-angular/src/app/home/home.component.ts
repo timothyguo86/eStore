@@ -6,7 +6,7 @@ import { CatNavigationComponent } from './components/catNavigation/catNavigation
 import { HeaderComponent } from './components/header/header.component';
 import { SearchKeyword } from './interfaces/searchKeyword.interface';
 import { CategoriesStoreItem } from './store/categoriesStoreItem';
-import { ProductsStoreItem } from './store/products.storeItem';
+import { ProductsStoreItem } from './store/productsStoreItem';
 
 @Component({
   selector: 'home',
