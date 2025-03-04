@@ -27,7 +27,7 @@ export class ProductsComponent {
 
   constructor(
     public productsStore: ProductsStoreItem,
-    private readonly cartStoreItem: CartStoreItem
+    private readonly cartStoreItem: CartStoreItem,
   ) {}
 
   addToCart(product: Product): void {

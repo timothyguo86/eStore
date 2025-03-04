@@ -21,7 +21,7 @@ export class SideNavigationComponent implements OnDestroy {
     this.subscriptions.add(
       categoryStoreItem.categories$.subscribe((categories) => {
         this.categories = categories;
-      })
+      }),
     );
   }
 
@@ -33,7 +33,7 @@ export class SideNavigationComponent implements OnDestroy {
     return this.categories.filter((category) =>
       parentCategoryId
         ? category.parent_category_id === parentCategoryId
-        : category.parent_category_id === null
+        : category.parent_category_id === null,
     );
   }
 

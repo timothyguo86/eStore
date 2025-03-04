@@ -27,7 +27,7 @@ export class UserLoginComponent implements OnInit {
   constructor(
     private readonly fb: FormBuilder,
     private readonly userService: UserService,
-    private readonly location: Location
+    private readonly location: Location,
   ) {}
 
   ngOnInit(): void {

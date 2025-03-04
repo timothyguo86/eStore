@@ -1,32 +1,32 @@
 <div class="row my-5 product-details-container">
-  @if(product){
-  <div class="col product-image-container">
-    <img
-      [src]="'assets/images/' + product.product_img"
-      [alt]="product.product_name"
-    />
-  </div>
+  @if (product) {
+    <div class="col product-image-container">
+      <img
+        [src]="'assets/images/' + product.product_img"
+        [alt]="product.product_name"
+      />
+    </div>
 
-  <div class="col product-information-container">
-    <span id="product-name">{{ product.product_name }}</span>
-    <ratings [score]="product.ratings"></ratings>
-    <hr />
-    <div class="product-price">
-      Price:
-      <span class="price"> {{ product.price | currency }}</span>
-      <div>Inclusive of all taxes.</div>
-    </div>
-    <div class="my-3 product-description">
-      {{ product.product_description }}
-    </div>
-    <button class="my-5 btn btn-warning cart-button" (click)="addToCart()">
-      <div class="cart-icon-container">
-        <fa-icon [icon]="faShoppingCart"></fa-icon>
+    <div class="col product-information-container">
+      <span id="product-name">{{ product.product_name }}</span>
+      <ratings [score]="product.ratings"></ratings>
+      <hr />
+      <div class="product-price">
+        Price:
+        <span class="price"> {{ product.price | currency }}</span>
+        <div>Inclusive of all taxes.</div>
       </div>
-      <div class="cart-text-container">Add to Cart</div>
-    </button>
-  </div>
+      <div class="my-3 product-description">
+        {{ product.product_description }}
+      </div>
+      <button class="my-5 btn btn-warning cart-button" (click)="addToCart()">
+        <div class="cart-icon-container">
+          <fa-icon [icon]="faShoppingCart"></fa-icon>
+        </div>
+        <div class="cart-text-container">Add to Cart</div>
+      </button>
+    </div>
   } @else {
-  <p>Loading product details...</p>
+    <p>Loading product details...</p>
   }
 </div>

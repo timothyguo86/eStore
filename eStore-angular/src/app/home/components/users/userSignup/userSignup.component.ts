@@ -26,7 +26,7 @@ export class UserSignupComponent implements OnInit {
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly userService: UserService
+    private readonly userService: UserService,
   ) {}
 
   ngOnInit(): void {
@@ -45,7 +45,7 @@ export class UserSignupComponent implements OnInit {
       // Form group level validation
       {
         validators: matchPasswordsValidator(),
-      }
+      },
     );
   }
 

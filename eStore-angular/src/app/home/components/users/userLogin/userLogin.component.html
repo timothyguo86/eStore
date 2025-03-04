@@ -10,10 +10,11 @@
           formControlName="email"
           placeholder="Enter email"
         />
-        @if(email?.touched && email?.errors?.["required"]) {
-        <span class="text-danger">Email is required</span>
-        } @if(email?.touched && email?.errors?.["email"]) {
-        <span class="text-danger">Enter valid email address</span>
+        @if (email?.touched && email?.errors?.["required"]) {
+          <span class="text-danger">Email is required</span>
+        }
+        @if (email?.touched && email?.errors?.["email"]) {
+          <span class="text-danger">Enter valid email address</span>
         }
       </div>
       <div class="form-group form-group-margin">
@@ -25,8 +26,8 @@
           formControlName="password"
           placeholder="Enter password"
         />
-        @if(password?.touched && password?.errors?.["required"]) {
-        <span class="text-danger">Password is required</span>
+        @if (password?.touched && password?.errors?.["required"]) {
+          <span class="text-danger">Password is required</span>
         }
       </div>
       <div class="text-center form-group-margin">
@@ -42,16 +43,16 @@
         Not a member? <a routerLink="../signup">Register</a>
       </div>
 
-      @if(alertMessage) {
-      <div
-        class="alert"
-        [ngClass]="{
-          'alert-success': alertType === 0,
-          'alert-danger': alertType === 2
-        }"
-      >
-        {{ alertMessage }}
-      </div>
+      @if (alertMessage) {
+        <div
+          class="alert"
+          [ngClass]="{
+            'alert-success': alertType === 0,
+            'alert-danger': alertType === 2,
+          }"
+        >
+          {{ alertMessage }}
+        </div>
       }
     </form>
   </div>

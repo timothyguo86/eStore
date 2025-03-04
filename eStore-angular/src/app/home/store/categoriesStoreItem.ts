@@ -27,8 +27,8 @@ export class CategoriesStoreItem extends StoreItem<Category[]> {
   get topLevelCategories$(): Observable<Category[]> {
     return this.value$.pipe(
       map((categories) =>
-        categories.filter((category) => category.parent_category_id === null)
-      )
+        categories.filter((category) => category.parent_category_id === null),
+      ),
     );
   }
 }

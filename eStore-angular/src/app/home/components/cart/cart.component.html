@@ -1,74 +1,74 @@
-@if(cartStoreItem.cart.products.length) {
-<div class="row my-4 fc-main-div">
-  <div class="col-8 p-4">
-    @for(cartItem of cartStoreItem.cart.products; track $index) {
-    <div class="row cart-item-card">
-      <div class="col-4">
-        <img
-          [src]="'assets/images/' + cartItem.product.product_img"
-          [alt]="cartItem.product.product_name"
-        />
-      </div>
-      <div class="col-8">
-        <div class="p-3 cart-item-details">
-          <span class="cart-item-name">
-            {{ cartItem.product.product_name }}
-          </span>
-          <div class="cart-item-price">
-            {{ cartItem.product.price | currency }}
+@if (cartStoreItem.cart.products.length) {
+  <div class="row my-4 fc-main-div">
+    <div class="col-8 p-4">
+      @for (cartItem of cartStoreItem.cart.products; track $index) {
+        <div class="row cart-item-card">
+          <div class="col-4">
+            <img
+              [src]="'assets/images/' + cartItem.product.product_img"
+              [alt]="cartItem.product.product_name"
+            />
           </div>
-          <ratings [score]="cartItem.product.ratings"></ratings>
-          <hr />
-          <div class="cart-edit-container">
-            <div class="btn-group mx-3">
-              <button
-                class="btn btn-outline-secondary"
-                (click)="decreaseQuantity(cartItem)"
-              >
-                -
-              </button>
-              <div class="btn disabled">{{ cartItem.quantity }}</div>
-              <button
-                class="btn btn-outline-secondary"
-                (click)="increaseQuantity(cartItem)"
-              >
-                +
-              </button>
-            </div>
+          <div class="col-8">
+            <div class="p-3 cart-item-details">
+              <span class="cart-item-name">
+                {{ cartItem.product.product_name }}
+              </span>
+              <div class="cart-item-price">
+                {{ cartItem.product.price | currency }}
+              </div>
+              <ratings [score]="cartItem.product.ratings"></ratings>
+              <hr />
+              <div class="cart-edit-container">
+                <div class="btn-group mx-3">
+                  <button
+                    class="btn btn-outline-secondary"
+                    (click)="decreaseQuantity(cartItem)"
+                  >
+                    -
+                  </button>
+                  <div class="btn disabled">{{ cartItem.quantity }}</div>
+                  <button
+                    class="btn btn-outline-secondary"
+                    (click)="increaseQuantity(cartItem)"
+                  >
+                    +
+                  </button>
+                </div>
 
-            <button
-              class="btn btn-outline-danger mx-4"
-              (click)="removeItem(cartItem)"
-            >
-              <fa-icon [icon]="faTrash"></fa-icon>
-              Remove Item
-            </button>
+                <button
+                  class="btn btn-outline-danger mx-4"
+                  (click)="removeItem(cartItem)"
+                >
+                  <fa-icon [icon]="faTrash"></fa-icon>
+                  Remove Item
+                </button>
+              </div>
+            </div>
           </div>
         </div>
+        <hr />
+      }
+    </div>
+    <div class="col-4 px-4 py-3 my-4 cart-summary">
+      <h2 class="mb-5 mt-3">Summary</h2>
+      <div>
+        <span>Cart Total: {{ cartStoreItem.cart.totalAmount | currency }}</span>
+        <span>Shipping Charges: Free</span>
+        <hr />
+        <span class="summary-total">
+          Total: {{ cartStoreItem.cart.totalAmount | currency }}
+        </span>
       </div>
+      <div class="btn btn-outline-dark w-100 mb-4 mt-1">Checkout</div>
     </div>
-    <hr />
-    }
   </div>
-  <div class="col-4 px-4 py-3 my-4 cart-summary">
-    <h2 class="mb-5 mt-3">Summary</h2>
-    <div>
-      <span>Cart Total: {{ cartStoreItem.cart.totalAmount | currency }}</span>
-      <span>Shipping Charges: Free</span>
-      <hr />
-      <span class="summary-total">
-        Total: {{ cartStoreItem.cart.totalAmount | currency }}
-      </span>
-    </div>
-    <div class="btn btn-outline-dark w-100 mb-4 mt-1">Checkout</div>
-  </div>
-</div>
 } @else {
-<div class="p-4 ec-main-div">
-  <span class="my-5 ec-text">The Cart is Empty</span>
-  <hr />
-  <button class="btn btn-warning my-3" (click)="navigateToHome()">
-    <span>Continue Shopping</span>
-  </button>
-</div>
+  <div class="p-4 ec-main-div">
+    <span class="my-5 ec-text">The Cart is Empty</span>
+    <hr />
+    <button class="btn btn-warning my-3" (click)="navigateToHome()">
+      <span>Continue Shopping</span>
+    </button>
+  </div>
 }

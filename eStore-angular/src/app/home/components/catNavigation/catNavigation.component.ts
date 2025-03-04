@@ -20,7 +20,7 @@ export class CatNavigationComponent {
 
   constructor(
     public categoryStore: CategoriesStoreItem,
-    private readonly router: Router
+    private readonly router: Router,
   ) {
     router.events
       .pipe(filter((event) => event instanceof NavigationEnd))

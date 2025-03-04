@@ -13,8 +13,8 @@
           formControlName="firstName"
           placeholder="Enter first name"
         />
-        @if(firstName?.touched && firstName?.errors?.['required']) {
-        <span class="text-danger">First Name is required</span>
+        @if (firstName?.touched && firstName?.errors?.["required"]) {
+          <span class="text-danger">First Name is required</span>
         }
       </div>
       <div class="form-group col-md-6">
@@ -82,10 +82,11 @@
         formControlName="email"
         placeholder="Enter email"
       />
-      @if( email?.touched && email?.errors?.['required']) {
-      <span class="text-danger">First Name is required</span>
-      } @if( email?.touched && email?.errors?.['email']) {
-      <span class="text-danger">Enter valid email address</span>
+      @if (email?.touched && email?.errors?.["required"]) {
+        <span class="text-danger">First Name is required</span>
+      }
+      @if (email?.touched && email?.errors?.["email"]) {
+        <span class="text-danger">Enter valid email address</span>
       }
     </div>
     <div class="form-group form-group-margin">
@@ -97,8 +98,8 @@
         formControlName="password"
         placeholder="Enter password"
       />
-      @if( password?.touched && password?.errors?.['required']) {
-      <span class="text-danger">Password is required</span>
+      @if (password?.touched && password?.errors?.["required"]) {
+        <span class="text-danger">Password is required</span>
       }
     </div>
 
@@ -111,13 +112,14 @@
         formControlName="confirmPassword"
         placeholder="Confirm password"
       />
-      @if(confirmPassword?.touched && confirmPassword?.errors?.['required']) {
-      <span class="text-danger">Confirm Password is required</span>
+      @if (confirmPassword?.touched && confirmPassword?.errors?.["required"]) {
+        <span class="text-danger">Confirm Password is required</span>
       }
       <!-- form level validation -->
-      @if(confirmPassword?.touched &&
-      userSignupForm.errors?.['passwordMismatch']) {
-      <span class="text-danger">Passwords don't match</span>
+      @if (
+        confirmPassword?.touched && userSignupForm.errors?.["passwordMismatch"]
+      ) {
+        <span class="text-danger">Passwords don't match</span>
       }
     </div>
     <div class="text-center form-group-margin">
@@ -129,17 +131,17 @@
         Join
       </button>
     </div>
-    @if(alertMessage) {
-    <div
-      class="alert"
-      [ngClass]="{
-        'alert-success': alertType === 0,
-        'alert-warning': alertType === 1,
-        'alert-danger': alertType === 2
-      }"
-    >
-      {{ alertMessage }}
-    </div>
+    @if (alertMessage) {
+      <div
+        class="alert"
+        [ngClass]="{
+          'alert-success': alertType === 0,
+          'alert-warning': alertType === 1,
+          'alert-danger': alertType === 2,
+        }"
+      >
+        {{ alertMessage }}
+      </div>
     }
   </form>
 </div>

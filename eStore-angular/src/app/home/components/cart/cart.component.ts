@@ -20,7 +20,7 @@ export class CartComponent {
 
   constructor(
     public cartStoreItem: CartStoreItem,
-    private readonly router: Router
+    private readonly router: Router,
   ) {}
 
   navigateToHome(): void {

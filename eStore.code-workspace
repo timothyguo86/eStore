@@ -1,11 +1,11 @@
 {
-	"folders": [
-		{
-			"path": "eStore-angular"
-		},
-		{
-			"path": "eStore-server"
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "eStore-angular",
+    },
+    {
+      "path": "eStore-server",
+    },
+  ],
+  "settings": {},
 }

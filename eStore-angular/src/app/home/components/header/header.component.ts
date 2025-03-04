@@ -36,7 +36,7 @@ export class HeaderComponent implements OnDestroy {
     public categoryStore: CategoriesStoreItem,
     public cartStoreItem: CartStoreItem,
     public userService: UserService,
-    private readonly router: Router
+    private readonly router: Router,
   ) {
     router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -48,14 +48,14 @@ export class HeaderComponent implements OnDestroy {
       this.userService.isUserAuthenticated$.subscribe(
         (isUserAuthenticated: boolean) => {
           this.isUserAuthenticated = isUserAuthenticated;
-        }
-      )
+        },
+      ),
     );
 
     this.subscription.add(
       this.userService.loggedInUser$.subscribe((loggedInUser) => {
         this.userName = loggedInUser.firstName;
-      })
+      }),
     );
   }
 

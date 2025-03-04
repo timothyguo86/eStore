@@ -25,7 +25,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private readonly activateRoute: ActivatedRoute,
     private readonly productsStoreItem: ProductsStoreItem,
-    private readonly cartStoreItem: CartStoreItem
+    private readonly cartStoreItem: CartStoreItem,
   ) {}
 
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.productsStoreItem.products$.subscribe((products) => {
         this.product = products.find((product) => product.id === id) as Product;
-      })
+      }),
     );
   }
 

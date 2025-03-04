@@ -42,7 +42,7 @@ users.post("/signup", (req, res) => {
             });
           });
         }
-      }
+      },
     );
   } catch (error) {
     res.status(400).send({
@@ -74,7 +74,7 @@ users.post("/login", (req, res) => {
                   email: email.email,
                 },
                 "eStore-secret-key",
-                { expiresIn: "1h" }
+                { expiresIn: "1h" },
               );
               res.status(200).send({
                 token,
@@ -99,7 +99,7 @@ users.post("/login", (req, res) => {
             message: "User doesn't exist",
           });
         }
-      }
+      },
     );
   } catch (error) {
     res.status(400).send({

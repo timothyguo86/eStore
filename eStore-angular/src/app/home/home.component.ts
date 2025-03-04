@@ -17,7 +17,7 @@ import { ProductsStoreItem } from './store/productsStoreItem';
 export class HomeComponent implements OnInit {
   constructor(
     private readonly categoriesStoreItem: CategoriesStoreItem,
-    private readonly productsStoreItem: ProductsStoreItem
+    private readonly productsStoreItem: ProductsStoreItem,
   ) {}
 
   ngOnInit(): void {
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 
   onSearchKeyword(searchKeyword: SearchKeyword) {
     this.productsStoreItem.loadProducts(
-      `maincategoryid=${searchKeyword.categoryId}&keyword=${searchKeyword.keyword}`
+      `maincategoryid=${searchKeyword.categoryId}&keyword=${searchKeyword.keyword}`,
     );
   }
 }

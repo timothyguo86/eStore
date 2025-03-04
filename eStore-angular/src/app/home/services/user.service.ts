@@ -47,7 +47,7 @@ export class UserService {
     localStorage.setItem('token', token.token);
     localStorage.setItem(
       'expiry',
-      new Date(Date.now() + token.expiresInSeconds * 1000).toISOString()
+      new Date(Date.now() + token.expiresInSeconds * 1000).toISOString(),
     );
     localStorage.setItem('firstName', token.user.firstName);
     localStorage.setItem('lastName', token.user.lastName);
