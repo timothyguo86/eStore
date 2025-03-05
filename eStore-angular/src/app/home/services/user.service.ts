@@ -38,11 +38,6 @@ export class UserService {
     return this.http.post<User>(url, { email, password });
   }
 
-  logout(): void {
-    localStorage.clear();
-    this.loggedInUserInfo.next(<LoggedInUser>{});
-  }
-
   activateToken(token: LoginToken) {
     localStorage.setItem('token', token.token);
     localStorage.setItem(
@@ -58,5 +53,11 @@ export class UserService {
 
     this.isAuthenticated.next(true);
     this.loggedInUserInfo.next(token.user);
+  }
+
+  logout(): void {
+    localStorage.clear();
+    this.isAuthenticated.next(false);
+    this.loggedInUserInfo.next(<LoggedInUser>{});
   }
 }
