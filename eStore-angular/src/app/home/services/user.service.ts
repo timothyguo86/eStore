@@ -14,7 +14,9 @@ export class UserService {
   private readonly loggedInUserInfo: BehaviorSubject<LoggedInUser> =
     new BehaviorSubject(<LoggedInUser>{});
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {
+    this.loadToken();
+  }
 
   get isUserAuthenticated(): boolean {
     return this.isAuthenticated.value;
@@ -59,5 +61,35 @@ export class UserService {
     localStorage.clear();
     this.isAuthenticated.next(false);
     this.loggedInUserInfo.next(<LoggedInUser>{});
+  }
+
+  loadToken(): void {
+    const token = localStorage.getItem('token');
+    const expiry = localStorage.getItem('expiry');
+
+    if (token && expiry) {
+      const now = new Date();
+      const expiryDate = new Date(expiry);
+      if (now < expiryDate) {
+        const firstName = localStorage.getItem('firstName') ?? '';
+        const lastName = localStorage.getItem('lastName') ?? '';
+        const address = localStorage.getItem('address') ?? '';
+        const city = localStorage.getItem('city') ?? '';
+        const state = localStorage.getItem('state') ?? '';
+        const pin = localStorage.getItem('pin') ?? '';
+
+        const user: LoggedInUser = {
+          firstName,
+          lastName,
+          address,
+          city,
+          state,
+          pin,
+        };
+
+        this.isAuthenticated.next(true);
+        this.loggedInUserInfo.next(user);
+      } else this.logout();
+    }
   }
 }
