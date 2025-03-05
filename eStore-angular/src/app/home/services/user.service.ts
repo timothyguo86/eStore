@@ -9,6 +9,7 @@ import { LoggedInUser, LoginToken, User } from '../interfaces/user.interface';
   providedIn: 'root',
 })
 export class UserService {
+  private autoLogoutTimer: any;
   private readonly isAuthenticated: BehaviorSubject<boolean> =
     new BehaviorSubject(false);
   private readonly loggedInUserInfo: BehaviorSubject<LoggedInUser> =
@@ -55,12 +56,14 @@ export class UserService {
 
     this.isAuthenticated.next(true);
     this.loggedInUserInfo.next(token.user);
+    this.setAutoLogoutTimer(token.expiresInSeconds * 1000);
   }
 
   logout(): void {
     localStorage.clear();
     this.isAuthenticated.next(false);
     this.loggedInUserInfo.next(<LoggedInUser>{});
+    clearTimeout(this.autoLogoutTimer);
   }
 
   loadToken(): void {
@@ -89,7 +92,14 @@ export class UserService {
 
         this.isAuthenticated.next(true);
         this.loggedInUserInfo.next(user);
+        this.setAutoLogoutTimer((expiryDate.getTime() - now.getTime()) / 1000);
       } else this.logout();
     }
+  }
+
+  private setAutoLogoutTimer(duration: number): void {
+    this.autoLogoutTimer = setTimeout(() => {
+      this.logout();
+    }, duration);
   }
 }
