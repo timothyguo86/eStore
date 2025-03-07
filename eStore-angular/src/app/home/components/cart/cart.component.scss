@@ -1,7 +1,6 @@
 .ec-main-div {
   height: 15rem;
-  margin: auto;
-  margin-top: 3rem;
+  margin: 3rem auto auto;
   text-align: center;
   width: 90%;
 
@@ -67,4 +66,18 @@
       font-weight: 550;
     }
   }
+}
+
+.field-margin {
+  margin-bottom: 1rem;
+}
+
+.submit-button {
+  border-color: black;
+  width: 100%;
+}
+
+.submit-button:hover {
+  background-color: black;
+  color: white;
 }

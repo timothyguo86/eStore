@@ -50,17 +50,99 @@
         <hr />
       }
     </div>
-    <div class="col-4 px-4 py-3 my-4 cart-summary">
-      <h2 class="mb-5 mt-3">Summary</h2>
-      <div>
-        <span>Cart Total: {{ cartStoreItem.cart.totalAmount | currency }}</span>
-        <span>Shipping Charges: Free</span>
-        <hr />
-        <span class="summary-total">
-          Total: {{ cartStoreItem.cart.totalAmount | currency }}
-        </span>
-      </div>
-      <div class="btn btn-outline-dark w-100 mb-4 mt-1">Checkout</div>
+
+    <div class="col-4">
+      <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="px-4 py-1 my-3 cart-summary">
+            <h2 class="mb-5 mt-3">Delivery Address</h2>
+            <div class="form-group row field-margin">
+              <label for="name" class="col-sm-3 col-form-label">Name</label>
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  formControlName="name"
+                  placeholder="Enter name"
+                />
+              </div>
+            </div>
+            <div class="form-group row field-margin">
+              <label for="address" class="col-sm-3 col-form-label"
+                >Address</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="address"
+                  formControlName="address"
+                  placeholder="Enter address"
+                />
+              </div>
+            </div>
+            <div class="form-group row field-margin">
+              <label for="city" class="col-sm-3 col-form-label">City</label>
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  formControlName="city"
+                  placeholder="Enter city"
+                />
+              </div>
+            </div>
+            <div class="form-group row field-margin">
+              <label for="state" class="col-sm-3 col-form-label">State</label>
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="state"
+                  formControlName="state"
+                  placeholder="Enter state"
+                />
+              </div>
+            </div>
+            <div class="form-group row field-margin">
+              <label for="pin" class="col-sm-3 col-form-label">Pin</label>
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="pin"
+                  formControlName="pin"
+                  placeholder="Enter pin"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="px-4 py-3 my-4 cart-summary">
+            <h2 class="mb-5 mt-3">Summary</h2>
+            <div>
+              <span>
+                Cart Total: {{ cartStoreItem.cart.totalAmount | currency }}
+              </span>
+              <span>Shipping Charges: Free</span>
+              <hr />
+              <span class="summary-total">
+                Total: {{ cartStoreItem.cart.totalAmount | currency }}
+              </span>
+            </div>
+            <button
+              type="submit"
+              class="btn submit-button"
+              [disabled]="orderForm.invalid"
+            >
+              Checkout
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 } @else {

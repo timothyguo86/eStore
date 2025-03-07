@@ -4,7 +4,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faTrash, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Subscription } from 'rxjs';
 // Local imports
 import { CartItem } from '../../interfaces/cart.interface';
@@ -15,7 +20,12 @@ import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-cart',
-  imports: [CurrencyPipe, RatingsComponent, FontAwesomeModule],
+  imports: [
+    CurrencyPipe,
+    RatingsComponent,
+    FontAwesomeModule,
+    ReactiveFormsModule,
+  ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
 })
