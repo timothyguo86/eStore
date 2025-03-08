@@ -4,6 +4,7 @@ const app = express();
 const products = require("./routes/products");
 const productCategories = require("./routes/productCategories");
 const users = require("./routes/users");
+const orders = require("./routes/orders");
 const PORT = 5001;
 const bodyParser = require("body-parser");
 
@@ -12,6 +13,7 @@ app.use(bodyParser.json()); // Resolves the data received in the body of the req
 app.use("/products", products);
 app.use("/productCategories", productCategories);
 app.use("/users", users);
+app.use("/orders", orders);
 
 const server = app.listen(PORT, () => {
   console.log("Server is running on port 5001");
