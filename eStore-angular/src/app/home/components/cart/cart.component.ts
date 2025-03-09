@@ -1,5 +1,5 @@
 // Third party imports
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, NgClass } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faTrash, IconDefinition } from '@fortawesome/free-solid-svg-icons';
@@ -12,11 +12,12 @@ import {
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
 // Local imports
-import { CartItem } from '../../interfaces/cart.interface';
+import { CartItem, DeliveryAddress } from '../../interfaces/cart.interface';
 import { CartStoreItem } from '../../store/cartStoreItem';
 import { RatingsComponent } from '../ratings/ratings.component';
 import { LoggedInUser } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
+import { OrderService } from '../../services/order.service';
 
 @Component({
   selector: 'app-cart',
@@ -25,6 +26,7 @@ import { UserService } from '../../services/user.service';
     RatingsComponent,
     FontAwesomeModule,
     ReactiveFormsModule,
+    NgClass,
   ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
@@ -34,12 +36,16 @@ export class CartComponent implements OnInit, OnDestroy {
   orderForm: FormGroup = new FormGroup({});
   user: LoggedInUser;
   subscription: Subscription = new Subscription();
+  alertType: number = 0;
+  alertMessage: string = '';
+  disableCheckout: boolean = false;
 
   constructor(
     public cartStoreItem: CartStoreItem,
     private readonly router: Router,
     private readonly fb: FormBuilder,
     private readonly userService: UserService,
+    private readonly orderService: OrderService,
   ) {
     this.user = {
       firstName: '',
@@ -75,7 +81,38 @@ export class CartComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onSubmit(): void {}
+  onSubmit(): void {
+    if (this.userService.isUserAuthenticated) {
+      const deliveryAddress: DeliveryAddress = {
+        userName: this.orderForm.get('name')?.value,
+        address: this.orderForm.get('address')?.value,
+        city: this.orderForm.get('city')?.value,
+        state: this.orderForm.get('state')?.value,
+        pin: this.orderForm.get('pin')?.value,
+      };
+
+      this.subscription.add(
+        this.orderService
+          .saveOrder(deliveryAddress, this.user.email)
+          .subscribe({
+            next: (result) => {
+              this.cartStoreItem.clearCart();
+              this.alertType = 0;
+              this.alertMessage = 'Order placed successfully!';
+              this.disableCheckout = true;
+            },
+            error: (error) => {
+              this.alertType = 2;
+              if (error.error.message === 'Authentication Failed!') {
+                this.alertMessage = 'Please login to place order!';
+              } else {
+                this.alertMessage = error.error.message;
+              }
+            },
+          }),
+      );
+    }
+  }
 
   navigateToHome(): void {
     this.router.navigate(['/home/products']);

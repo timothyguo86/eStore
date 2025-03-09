@@ -52,6 +52,14 @@
     </div>
 
     <div class="col-4">
+      @if (alertMessage !== "") {
+        <div
+          class="alert"
+          [ngClass]="alertType === 0 ? 'alert-success' : 'alert-danger'"
+        >
+          {{ alertMessage }}
+        </div>
+      }
       <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
         <div class="row">
           <div class="px-4 py-1 my-3 cart-summary">
@@ -136,7 +144,7 @@
             <button
               type="submit"
               class="btn submit-button"
-              [disabled]="orderForm.invalid"
+              [disabled]="orderForm.invalid || disableCheckout"
             >
               Checkout
             </button>
@@ -152,5 +160,13 @@
     <button class="btn btn-warning my-3" (click)="navigateToHome()">
       <span>Continue Shopping</span>
     </button>
+    @if (alertMessage !== "") {
+      <div
+        class="alert"
+        [ngClass]="alertType === 0 ? 'alert-success' : 'alert-danger'"
+      >
+        {{ alertMessage }}
+      </div>
+    }
   </div>
 }

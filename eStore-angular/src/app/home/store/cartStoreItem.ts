@@ -94,11 +94,9 @@ export class CartStoreItem extends StoreItem<Cart> {
 
   clearCart(): void {
     sessionStorage.clear();
-    this.setValue({
-      products: [],
-      totalAmount: 0,
-      totalProducts: 0,
-    });
+    this.cart.products = [];
+    this.cart.totalAmount = 0;
+    this.cart.totalProducts = 0;
   }
 
   private recalculateCartTotals(): void {
