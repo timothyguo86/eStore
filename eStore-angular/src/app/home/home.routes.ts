@@ -48,6 +48,13 @@ export const HOME_ROUTES: Routes = [
             (m) => m.UserLoginComponent,
           ),
       },
+      {
+        path: 'pastorders',
+        loadComponent: () =>
+          import('./components/pastOrders/pastOrders.component').then(
+            (m) => m.PastOrdersComponent,
+          ),
+      },
     ],
   },
 ];

@@ -77,4 +77,8 @@ export class HeaderComponent implements OnDestroy {
   logout(): void {
     this.userService.logout();
   }
+
+  pastOrders(): void {
+    this.router.navigate(['/home/pastorders']);
+  }
 }

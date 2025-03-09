@@ -73,7 +73,7 @@ users.post("/login", (req, res) => {
                   id: result[0].id,
                   email: email.email,
                 },
-                "eStore-secret-key",
+                "estore-secret-key",
                 { expiresIn: "1h" },
               );
               res.status(200).send({
