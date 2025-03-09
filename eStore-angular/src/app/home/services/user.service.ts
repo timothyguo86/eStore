@@ -10,6 +10,7 @@ import { LoggedInUser, LoginToken, User } from '../interfaces/user.interface';
 })
 export class UserService {
   private autoLogoutTimer: any;
+  private authToken!: string;
   private readonly isAuthenticated: BehaviorSubject<boolean> =
     new BehaviorSubject(false);
   private readonly loggedInUserInfo: BehaviorSubject<LoggedInUser> =
@@ -31,6 +32,10 @@ export class UserService {
     return this.loggedInUserInfo.asObservable();
   }
 
+  get token(): string {
+    return this.authToken;
+  }
+
   createUser(user: User): Observable<any> {
     const url: string = 'http://localhost:5001/users/signup';
     return this.http.post<User>(url, user);
@@ -41,7 +46,7 @@ export class UserService {
     return this.http.post<User>(url, { email, password });
   }
 
-  activateToken(token: LoginToken) {
+  activateToken(token: LoginToken, email: string) {
     localStorage.setItem('token', token.token);
     localStorage.setItem(
       'expiry',
@@ -53,10 +58,12 @@ export class UserService {
     localStorage.setItem('city', token.user.city);
     localStorage.setItem('state', token.user.state);
     localStorage.setItem('pin', token.user.pin);
+    localStorage.setItem('email', email);
 
     this.isAuthenticated.next(true);
     this.loggedInUserInfo.next(token.user);
     this.setAutoLogoutTimer(token.expiresInSeconds * 1000);
+    this.authToken = token.token;
   }
 
   logout(): void {
@@ -80,6 +87,7 @@ export class UserService {
         const city = localStorage.getItem('city') ?? '';
         const state = localStorage.getItem('state') ?? '';
         const pin = localStorage.getItem('pin') ?? '';
+        const email = localStorage.getItem('email') ?? '';
 
         const user: LoggedInUser = {
           firstName,
@@ -88,11 +96,14 @@ export class UserService {
           city,
           state,
           pin,
+          email,
         };
 
         this.isAuthenticated.next(true);
         this.loggedInUserInfo.next(user);
         this.setAutoLogoutTimer((expiryDate.getTime() - now.getTime()) / 1000);
+
+        this.authToken = token;
       } else this.logout();
     }
   }

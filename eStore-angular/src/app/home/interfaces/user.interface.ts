@@ -27,4 +27,5 @@ export interface LoggedInUser {
   city: string;
   state: string;
   pin: string;
+  email: string;
 }

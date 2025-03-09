@@ -92,6 +92,15 @@ export class CartStoreItem extends StoreItem<Cart> {
     sessionStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
+  clearCart(): void {
+    sessionStorage.clear();
+    this.setValue({
+      products: [],
+      totalAmount: 0,
+      totalProducts: 0,
+    });
+  }
+
   private recalculateCartTotals(): void {
     this.cart.totalProducts = this.cart.products.reduce(
       (sum, item) => sum + item.quantity,
