@@ -1,5 +1,7 @@
 // Third party import
 import { Routes } from '@angular/router';
+// Local imports
+import { authGuard } from './services/authguard';
 
 export const HOME_ROUTES: Routes = [
   {
@@ -54,6 +56,7 @@ export const HOME_ROUTES: Routes = [
           import('./components/pastOrders/pastOrders.component').then(
             (m) => m.PastOrdersComponent,
           ),
+        canActivate: [authGuard],
       },
     ],
   },

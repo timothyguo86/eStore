@@ -1,0 +1,56 @@
+.fc-main-div {
+  margin: auto;
+  text-align: center;
+  width: 70%;
+
+  .order-item-card {
+    img {
+      border-radius: 0.5rem;
+      height: 13rem;
+      margin-bottom: 1rem;
+    }
+
+    .order-item-details {
+      text-align: left;
+
+      .order-item-name {
+        font-size: 1.4rem;
+      }
+
+      .order-item-price {
+        float: right;
+
+        span {
+          font-size: 1.5rem;
+        }
+      }
+
+      span {
+        font-size: large;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .order-summary {
+    background-color: aliceblue;
+    border-radius: 2rem;
+    height: fit-content;
+    text-align: start;
+
+    span {
+      color: rgb(78, 78, 78);
+      display: block;
+      margin: 1em 0;
+    }
+
+    h2 {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .summary-total {
+      color: black;
+      font-weight: 550;
+    }
+  }
+}
