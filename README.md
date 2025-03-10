@@ -164,7 +164,6 @@ ng build --configuration production
 
 ```bash
 cd eStore-server
-npm run build
-npm run start
+nodemon index.js
 ```
 
