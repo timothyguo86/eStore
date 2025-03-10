@@ -1,59 +1,65 @@
-# Estore
+# eStore Angular Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
+A modern e-commerce frontend application built with Angular 19.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- User authentication and authorization
+- Product browsing and searching
+- Shopping cart functionality
+- Order management and tracking
+- Responsive design using Bootstrap 5
+- FontAwesome icons integration
 
+## Technologies Used
+
+- Angular 19.1.0
+- TypeScript 5.7.2
+- Bootstrap 5.3.3
+- RxJS 7.8.0
+- Font Awesome
+
+## Prerequisites
+
+- Node.js (Latest LTS version recommended)
+- npm package manager
+- Angular CLI 19.1.6
+
+## Installation
+
+1. Clone the repository:
 ```bash
-ng serve
+git clone https://github.com/timothyguo86/eStore.git
+cd eStore-angular
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+2. Install dependencies:
 ```bash
-ng generate component component-name
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Development Server
 
+Run the development server:
 ```bash
-ng generate --help
+npm run start
 ```
 
-## Building
+Navigate to `http://localhost:4200/`. The application will automatically reload if you change any source files.
 
-To build the project run:
+## Building for Production
 
+Build the project:
 ```bash
-ng build
+npm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Project Structure
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- `src/app/components/` - Application components
+- `src/app/services/` - Services for data management and API communication
+- `src/app/models/` - TypeScript interfaces and models
+- `src/assets/` - Static assets including images and styles
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
