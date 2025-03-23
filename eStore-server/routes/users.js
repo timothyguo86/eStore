@@ -16,7 +16,9 @@ users.post("/signup", (req, res) => {
     let password = req.body.password;
 
     pool.query(
-      `select count(*) as count from users where email like '${email}'`,
+      `select count(*) as count
+         from users
+         where email like '${email}'`,
       (error, resultCount) => {
         if (error) {
           res.status(500).send({
@@ -27,9 +29,9 @@ users.post("/signup", (req, res) => {
           res.status(200).send({ message: "Email already exists" });
         } else {
           bcryptjs.hash(password, 10).then((hashedPassword) => {
-            const query = `Insert into users (email,firstName,lastName,address,city,state,pin,password)
-                    values
-                    ('${email}','${firstName}','${lastName}','${address}','${city}','${state}','${pin}','${hashedPassword}')`;
+            const query = `Insert into users (email, firstName, lastName, address, city, state, pin, password)
+                           values ('${email}', '${firstName}', '${lastName}', '${address}', '${city}',
+                                   '${state}', '${pin}', '${hashedPassword}')`;
             pool.query(query, (error, result) => {
               if (error) {
                 res.status(401).send({
@@ -58,7 +60,9 @@ users.post("/login", (req, res) => {
     let password = req.body.password;
 
     pool.query(
-      `select * from users where email like '${email.email}'`,
+      `select *
+         from users
+         where email like '${email.email}'`,
       (error, result) => {
         if (error) {
           res.status(500).send({
