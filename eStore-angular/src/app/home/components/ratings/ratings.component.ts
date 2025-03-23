@@ -3,9 +3,9 @@ import { Component, Input } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons';
 import {
-  IconDefinition,
   faStar,
   faStarHalfStroke,
+  IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
