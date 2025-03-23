@@ -1,14 +1,14 @@
 <div class="container form-container">
   <div class="row justify-content-center">
-    <form class="col-md-6" [formGroup]="userLoginForm" (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" [formGroup]="userLoginForm" class="col-md-6">
       <div class="form-group form-group-margin">
         <label for="email">Email*</label>
         <input
-          type="email"
           class="form-control"
-          id="email"
           formControlName="email"
+          id="email"
           placeholder="Enter email"
+          type="email"
         />
         @if (email?.touched && email?.errors?.["required"]) {
           <span class="text-danger">Email is required</span>
@@ -20,11 +20,11 @@
       <div class="form-group form-group-margin">
         <label for="password">Password*</label>
         <input
-          type="password"
           class="form-control"
-          id="password"
           formControlName="password"
+          id="password"
           placeholder="Enter password"
+          type="password"
         />
         @if (password?.touched && password?.errors?.["required"]) {
           <span class="text-danger">Password is required</span>
@@ -32,9 +32,9 @@
       </div>
       <div class="text-center form-group-margin">
         <button
-          type="submit"
-          class="btn btn-warning"
           [disabled]="userLoginForm.invalid"
+          class="btn btn-warning"
+          type="submit"
         >
           Sign In
         </button>

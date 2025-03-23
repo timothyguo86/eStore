@@ -28,12 +28,14 @@ A modern e-commerce frontend application built with Angular 19.
 ## Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/timothyguo86/eStore.git
 cd eStore-angular
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
@@ -41,6 +43,7 @@ npm install
 ## Development Server
 
 Run the development server:
+
 ```bash
 npm run start
 ```
@@ -50,6 +53,7 @@ Navigate to `http://localhost:4200/`. The application will automatically reload 
 ## Building for Production
 
 Build the project:
+
 ```bash
 npm run build
 ```

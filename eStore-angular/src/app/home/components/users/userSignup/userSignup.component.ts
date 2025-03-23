@@ -29,6 +29,22 @@ export class UserSignupComponent implements OnInit {
     private readonly userService: UserService,
   ) {}
 
+  get firstName(): AbstractControl<any, any> | null {
+    return this.userSignupForm.get('firstName');
+  }
+
+  get email(): AbstractControl<any, any> | null {
+    return this.userSignupForm.get('email');
+  }
+
+  get password(): AbstractControl<any, any> | null {
+    return this.userSignupForm.get('password');
+  }
+
+  get confirmPassword(): AbstractControl<any, any> | null {
+    return this.userSignupForm.get('confirmPassword');
+  }
+
   ngOnInit(): void {
     this.userSignupForm = this.fb.group(
       {
@@ -47,22 +63,6 @@ export class UserSignupComponent implements OnInit {
         validators: matchPasswordsValidator(),
       },
     );
-  }
-
-  get firstName(): AbstractControl<any, any> | null {
-    return this.userSignupForm.get('firstName');
-  }
-
-  get email(): AbstractControl<any, any> | null {
-    return this.userSignupForm.get('email');
-  }
-
-  get password(): AbstractControl<any, any> | null {
-    return this.userSignupForm.get('password');
-  }
-
-  get confirmPassword(): AbstractControl<any, any> | null {
-    return this.userSignupForm.get('confirmPassword');
   }
 
   onSubmit(): void {

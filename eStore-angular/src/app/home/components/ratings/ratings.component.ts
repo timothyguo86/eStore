@@ -15,6 +15,13 @@ import {
   styleUrl: './ratings.component.scss',
 })
 export class RatingsComponent {
+  stars: IconDefinition[] = [];
+  faStar = faStar;
+  faStarHalfStroke = faStarHalfStroke;
+  faStarEmpty = faStarEmpty;
+
+  private _score: number = 0;
+
   @Input({ required: true }) set score(val: number) {
     this.stars = [];
 
@@ -37,11 +44,4 @@ export class RatingsComponent {
       this.stars.push(this.faStarEmpty);
     }
   }
-
-  stars: IconDefinition[] = [];
-  faStar = faStar;
-  faStarHalfStroke = faStarHalfStroke;
-  faStarEmpty = faStarEmpty;
-
-  private _score: number = 0;
 }

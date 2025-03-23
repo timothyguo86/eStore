@@ -59,7 +59,7 @@
 
   <!-- Cart Wishlist -->
   <div class="cart-wishlist p-0 list-item">
-    <button class="btn btn-dark position-relative" (click)="navigateToCart()">
+    <button (click)="navigateToCart()" class="btn btn-dark position-relative">
       <fa-icon [icon]="faShoppingCart"></fa-icon>
       @if (cartStoreItem.cart$ | async; as cart) {
         @if (cart.totalProducts > 0) {

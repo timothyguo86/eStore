@@ -14,13 +14,13 @@ export class ProductsStoreItem extends StoreItem<Product[]> {
     super([]);
   }
 
+  get products$(): Observable<Product[]> {
+    return this.value$;
+  }
+
   async loadProducts(query?: string) {
     this.productsService.getAllProducts(query).subscribe((products) => {
       this.setValue(products);
     });
-  }
-
-  get products$(): Observable<Product[]> {
-    return this.value$;
   }
 }

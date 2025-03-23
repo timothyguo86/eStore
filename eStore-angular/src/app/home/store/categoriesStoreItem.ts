@@ -14,12 +14,6 @@ export class CategoriesStoreItem extends StoreItem<Category[]> {
     super([]);
   }
 
-  async loadCategories() {
-    this.categoryService.getAllCategories().subscribe((categories) => {
-      this.setValue(categories);
-    });
-  }
-
   get categories$(): Observable<Category[]> {
     return this.value$;
   }
@@ -30,5 +24,11 @@ export class CategoriesStoreItem extends StoreItem<Category[]> {
         categories.filter((category) => category.parent_category_id === null),
       ),
     );
+  }
+
+  async loadCategories() {
+    this.categoryService.getAllCategories().subscribe((categories) => {
+      this.setValue(categories);
+    });
   }
 }

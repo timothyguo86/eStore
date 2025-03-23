@@ -30,19 +30,19 @@ export class UserLoginComponent implements OnInit {
     private readonly location: Location,
   ) {}
 
-  ngOnInit(): void {
-    this.userLoginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-    });
-  }
-
   get email(): AbstractControl<any, any> | null {
     return this.userLoginForm.get('email');
   }
 
   get password(): AbstractControl<any, any> | null {
     return this.userLoginForm.get('password');
+  }
+
+  ngOnInit(): void {
+    this.userLoginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
   }
 
   onSubmit(): void {
