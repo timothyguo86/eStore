@@ -1,79 +1,118 @@
-# Persona
+# eStore Project Guidelines
 
-You are a dedicated Angular developer who thrives on leveraging the absolute latest features of the framework to build
-cutting-edge applications. You are currently immersed in Angular v20+, passionately adopting signals for reactive state
-management, embracing standalone components for streamlined architecture, and utilizing the new control flow for more
-intuitive template logic. Performance is paramount to you, who constantly seeks to optimize change detection and improve
-user experience through these modern Angular paradigms. When prompted, assume You are familiar with all the newest APIs
-and best practices, valuing clean, efficient, and maintainable code.
+This document provides essential information for developers working on the eStore project.
 
-## Examples
+## Build/Configuration Instructions
 
-These are modern examples of how to write an Angular 20 component with signals
+### Angular Frontend (eStore-angular)
 
-```ts
-import {
-  ChangeDetectionStrategy,
-  Component,
-  signal
-} from '@angular/core';
+1. **Prerequisites**:
+   - Node.js (v18+ recommended)
+   - npm (v9+ recommended)
 
+2. **Installation**:
+   ```bash
+   cd eStore-angular
+   npm install
+   ```
 
-@Component({
-  selector: '{{tag-name}}-root',
-  templateUrl: '{{tag-name}}.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class { {
-  ClassName
-}
-}
-{
-protected readonly
-  isServerRunning = signal(true);
-  toggleServerStatus()
-  {
-    this.isServerRunning.update(isServerRunning => !isServerRunning);
-  }
-}
-```
+3. **Development Server**:
+   ```bash
+   npm start
+   ```
+   This will start the Angular development server at http://localhost:4200
 
-```css
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+4. **Production Build**:
+   ```bash
+   npm run build
+   ```
+   The build artifacts will be stored in the `dist/estore` directory.
 
-  button {
-    margin-top: 10px;
-  }
-}
-```
+### Node.js Backend (eStore-server)
 
-```html
-<section class="container">
-  @if (isServerRunning()) {
-  <span>Yes, the server is running</span>
-  } @else {
-  <span>No, the server is not running</span>
-  }
-  <button (click)="toggleServerStatus()">Toggle Server Status</button>
-</section>
-```
+1. **Prerequisites**:
+   - Node.js (v16+ recommended)
+   - MySQL database
 
-When you update a component, be sure to put the logic in the ts file, the styles in the css file and the html template
-in the html file.
+2. **Installation**:
+   ```bash
+   cd eStore-server
+   npm install
+   ```
 
-## Resources
+3. **Database Configuration**:
+   - The server uses MySQL. Configure your database connection in `shared/pool.js`.
 
-Here are some links to the essentials for building Angular applications. Use these to get an understanding of how some
-of the core functionality works
-https://angular.dev/essentials/components
-https://angular.dev/essentials/signals
-https://angular.dev/essentials/templates
-https://angular.dev/essentials/dependency-injection
+4. **Starting the Server**:
+   ```bash
+   node index.js
+   ```
+   The server will run on port 5001 (http://localhost:5001).
+
+## Testing Information
+
+### Angular Testing
+
+1. **Running Tests**:
+   ```bash
+   cd eStore-angular
+   npm test
+   ```
+   This will execute the unit tests via Karma in a Chrome browser.
+
+2. **Test Structure**:
+   - Tests are written using Jasmine and are located in `.spec.ts` files alongside the components they test.
+   - Example: `app.component.spec.ts` tests `app.component.ts`.
+
+3. **Creating New Tests**:
+   - Create a new file with the `.spec.ts` extension next to the file you want to test.
+   - Follow the pattern in existing tests:
+     ```typescript
+     import { ComponentFixture, TestBed } from '@angular/core/testing';
+     import { YourComponent } from './your.component';
+
+     describe('YourComponent', () => {
+       let component: YourComponent;
+       let fixture: ComponentFixture<YourComponent>;
+
+       beforeEach(async () => {
+         await TestBed.configureTestingModule({
+           imports: [/* required modules */],
+           providers: [/* required services */]
+         }).compileComponents();
+
+         fixture = TestBed.createComponent(YourComponent);
+         component = fixture.componentInstance;
+         fixture.detectChanges();
+       });
+
+       it('should create', () => {
+         expect(component).toBeTruthy();
+       });
+
+       // Additional test cases
+     });
+     ```
+
+4. **Testing Services**:
+   - For services, use TestBed to configure the testing module with necessary dependencies.
+   - Mock external dependencies using jasmine spies or mock classes.
+
+### Backend Testing
+
+Currently, the backend doesn't have a configured testing framework. When implementing tests:
+
+1. Consider using Jest or Mocha with Chai for API testing.
+2. Create a separate test database configuration to avoid affecting production data.
+3. Implement tests for each route in separate files matching the route structure.
+
+## Angular Development Resources
+
+Here are some links to the essentials for building Angular applications:
+- https://angular.dev/essentials/components
+- https://angular.dev/essentials/signals
+- https://angular.dev/essentials/templates
+- https://angular.dev/essentials/dependency-injection
 
 ## Best practices & Style guide
 
